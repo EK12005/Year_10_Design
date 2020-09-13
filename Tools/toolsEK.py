@@ -3,6 +3,7 @@
 isEven takes a single integer parameter a >= 0 returning true 
 if a is even and false if a is odd
 '''
+
 def isEven(a):
 
 	if a % 2 == 0:
