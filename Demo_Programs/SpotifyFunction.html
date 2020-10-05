@@ -3,23 +3,22 @@
 <head>
 </head>
 <body>
-	Genre: <input type="text" id="ebox" placeholder="Genre name...">
+	Genre: <input type="text" id="ebox" placeholder="Genre name..."> <!--Entry box wth id "ebox" -->
 
-	<button onclick="submitGenre()" class="button">Submit</button>
+	<button onclick="submitGenre()" class="button">Submit</button> <!--Button with function submitGenre() -->
 
-	<iframe id="iframeDisplay" src="https://open.spotify.com/embed/playlist/37i9dQZF1DXbITWG1ZJKYt" width="300" height="380" frameborder="0" allowtransparency="true" allow="encrypted-media"></iframe>
+	<iframe id="iframeDisplay" src="https://open.spotify.com/embed/playlist/37i9dQZF1DXbITWG1ZJKYt" width="300" height="380" frameborder="0" allowtransparency="true" allow="encrypted-media"></iframe> <!--Playlist pasted from Spotify desktop app -->
 
-	<p>Type in "Rap" into the entry box and click the button. A rap-related playlist should replace the current existing jazz playlist.</p>
+	<p>Type in "Rap" into the entry box and click the button. A rap-related playlist should replace the current existing jazz playlist.</p> <!--Explanation-->
 
 	<script>
 
 		function submitGenre() {
-			var eboxtext = document.getElementById("ebox").value;
-			if (eboxtext == "Rap") {
-				document.getElementById("iframeDisplay").src = "https://open.spotify.com/embed/playlist/1HDS5MxpQEMvZVBl2QAqzC";
-			}
-			else {
-				alert("Error");
+			var eboxtext = document.getElementById("ebox").value; //takes value from entry box 
+			if (eboxtext == "Rap") { //if the text inside the entry box is "Rap" 
+				document.getElementById("iframeDisplay").src = "https://open.spotify.com/embed/playlist/1HDS5MxpQEMvZVBl2QAqzC"; //takes the iframe and changes the link of it (everything else is the same)			}
+			else { //if the text inside the entry box is anything other than "Rap"
+				alert("Error"); //gives alert which says "Error"
 			}
 		}
 
