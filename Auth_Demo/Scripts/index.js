@@ -27,3 +27,5 @@ function checkCred(u,p) {
 
 x = checkCred("user1@test.com","pword1")
 console.log(x)
+
+//need to access the information from the webpage and then pass it to the function. IF true I update display for valid user, if it is false I send error message

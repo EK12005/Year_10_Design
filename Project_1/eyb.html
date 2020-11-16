@@ -72,25 +72,48 @@
 
        <div class="row">
             <div class="col s12 m6">
-                  <h3 style="color:#0FA6E8">Try Something New</h4>
+              <h3 style="color:#0FA6E8">Try Something New</h4>
 
-                  <h6 class="center">Nulla tincidunt tristique dui vitae ultricies. Fusce auctor neque vel<br> fermentum congue. Aliquam a ex at metus placerat cursus laoreet ac leo.<br> Cras at justo ut purus pretium vulputate sit amet ac leo.</h6>
+              <h6 class="center">Nulla tincidunt tristique dui vitae ultricies. Fusce auctor neque vel<br> fermentum congue. Aliquam a ex at metus placerat cursus laoreet ac leo.<br> Cras at justo ut purus pretium vulputate sit amet ac leo.</h6>
 
-                  Genre: <input type="text" id="ebox" placeholder="Genre name...">
+              <select id="opbox">
+                <option value="" disabled selected>Select A Genre</option>
+                <option value="Rap/Hip Hop">Rap/Hip Hop</option>
+                <option value="Classical">Classical</option>
+                <option value="Rock">Rock</option>
+                <option value="Country">Country</option>
+                <option value="R&B">R&B</option>
+                <option value="Pop">Pop</option>
+                <option value="Electronic">Electronic</option>
+                <option value="Folk">Folk</option>
+                </select>
+              <label>Genre...</label>
 
-                  <button onclick="submitGenre()" class="button">Submit</button>
+              <button class="btn waves-effect waves-light" type="submit" name="action" onclick="submitGenre()">Submit
+              <i class="material-icons right">send</i>
+              </button>
+
+              <h3 style="color:#0FA6E8">Advanced Search</h4>
+
+              <h6 class="center">Nulla tincidunt tristique dui vitae ultricies. Fusce auctor neque vel<br> fermentum congue. Aliquam a ex at metus placerat cursus laoreet ac leo.<br> Cras at justo ut purus pretium vulputate sit amet ac leo.</h6>
+
+              <input placeholder="Search..." id="searchbox" type="text" class="validate">
+
+              <button class="btn waves-effect waves-light" type="submit" name="action" onclick="searchSpotify()">Submit
+              <i class="material-icons right">send</i>
+              </button>
+
             </div>
 
             <div class="col s12 m6">
               <br><br>
-              <iframe id="iframeDisplay" src="https://open.spotify.com/embed/playlist/37i9dQZF1DXbITWG1ZJKYt" width="400" height="480" frameborder="0" allowtransparency="true" allow="encrypted-media"></iframe>
+              <iframe id="iframeDisplay" src="https://open.spotify.com/embed/playlist/37i9dQZF1DXbITWG1ZJKYt" width="440" height="480" frameborder="0" allowtransparency="true" allow="encrypted-media"></iframe>
             </div>
 
       </div>
 
      </center>
 
-			
   		</main>
 
         <!--JavaScript at end of body for optimized loading-->
@@ -99,13 +122,45 @@
   		<script src="scripts/init.js"></script>
       <script>
 
+        $(document).ready(function(){
+          $('select').formSelect();
+        });
+
         function submitGenre() {
-          var eboxtext = document.getElementById("ebox").value; //takes value from entry box 
-          if (eboxtext == "Rap") { //if the text inside the entry box is "Rap" 
-            document.getElementById("iframeDisplay").src = "https://open.spotify.com/embed/playlist/1HDS5MxpQEMvZVBl2QAqzC"; //takes the iframe and changes the link of it (everything else is the same)      }
-          } else { //if the text inside the entry box is anything other than "Rap"
-            alert("Error"); //gives alert which says "Error"
+          var oboxtext = document.getElementById("opbox").value;
+
+          if (oboxtext == "Rap/Hip Hop") {  
+            document.getElementById("iframeDisplay").src = "https://open.spotify.com/embed/playlist/34QxATlnJTgezHvIJyedlW";
           }
+
+          if (oboxtext == "Classical") {  
+            document.getElementById("iframeDisplay").src = "https://open.spotify.com/embed/playlist/2uY8d5Z04NBdB7I1VaXfyA";
+          }
+
+          if (oboxtext == "Rock") {  
+            document.getElementById("iframeDisplay").src = "https://open.spotify.com/embed/playlist/3J1daCtkRMA64XipQZFEI4";
+          }
+
+          if (oboxtext == "Country") {  
+            document.getElementById("iframeDisplay").src = "https://open.spotify.com/embed/playlist/3cnsSaM8AbtPzVCQmta8mB";
+          }
+
+          if (oboxtext == "R&B") {  
+            document.getElementById("iframeDisplay").src = "https://open.spotify.com/embed/playlist/26by5DpfDHncyZwQ1OEhWE";
+          }
+
+          if (oboxtext == "Pop") {  
+            document.getElementById("iframeDisplay").src = "https://open.spotify.com/embed/playlist/5sKElvuQIS1iioj1VGeHS4";
+          }
+
+          if (oboxtext == "Electronic") {  
+            document.getElementById("iframeDisplay").src = "https://open.spotify.com/embed/playlist/3UFbNBKXwQDUYsUWkMhjhz";
+          }
+
+          if (oboxtext == "Folk") {  
+            document.getElementById("iframeDisplay").src = "https://open.spotify.com/embed/playlist/1t9E1HzC4jwOlsvV1006jo";
+          }
+
         }
 
   </script>
