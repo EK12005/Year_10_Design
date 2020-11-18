@@ -103,7 +103,7 @@
 
               <h6 class="center">For a bit more freedom, try typing in your own entry in the box below. The Spotify widget will be replaced by the top playlist option from that search.</h6>
 
-              <input placeholder="Search..." id="searchbox" type="text" class="validate">
+              <input placeholder="Search..." id = "input" type="text" class="validate">
 
               <button class="btn waves-effect waves-light" type="submit" name="action" onclick="searchSpotify()">Submit
               <i class="material-icons right">send</i>
@@ -167,6 +167,17 @@
             document.getElementById("iframeDisplay").src = "https://open.spotify.com/embed/playlist/1t9E1HzC4jwOlsvV1006jo";
           }
 
+        }
+
+        function searchSpotify() {
+          input = document.getElementById("input").value
+          console.log(input)
+
+          
+
+          playlistlink = document.createElement("p") //Creates new p tag
+          playlistlink.innerHTML = result["spotify"]
+          output.append(playlistlink) //puts tag on webpage
         }
 
 
