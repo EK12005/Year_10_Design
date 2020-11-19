@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <!--Import Google Icon Font-->
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <!--Import materialize.css-->
+  <link rel="stylesheet" href="scripts/materialize.min.css" media="screen,projection" />
+  <!--Let browser know website is optimized for mobile-->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <style>
+    .page-footer {
+      background-color: #0FA6E8;
+    }
+
+    .nav-wrapper {
+      background-color: #0FA6E8;
+    }
+
+    body {
+      display: flex;
+      min-height: 100vh;
+      flex-direction: column;
+    }
+
+    main {
+      flex: 1 0 auto;
+    }
+
+    mark {
+      background-color: #6588bf;
+      color: black;
+    }
+
+    img {
+      box-shadow: 8px 8px 4px grey;
+    }
+  </style>
+</head>
+
+<body>
+
+  <header>
+
+    <nav class="blue">
+      <div class="nav-wrapper">
+        <a href="#" class="brand-logo center">Expanding Your Boundaries</a>
+        <ul id="nav-mobile" class="left hide-on-med-and-down">
+          <li><a href="index.html">Home</a></li>
+          <li class="active"><a href="eyb.html">Expanding Your Boundaries</a></li>
+        </ul>
+      </div>
+    </nav>
+
+  </header>
+
+  <main>
+
+    <center>
+
+      <div class="row">
+        <div class="col s12 m6">
+          <h3 style="color:#0FA6E8">Expanding Your Boundaries</h4>
+            <img src="https://cdn.statcdn.com/Infographic/images/normal/15763.jpeg" width="506" height="368">
+        </div>
+        <div class="col s12 m6">
+          <br><br><br>
+          <h5 class="center">Not only has the effect of listening to music in general been studied, the impact of
+            different genres and types of music has also been an interest of researchers.</h5>
+          <h5 class="center"><a href="https://pubmed.ncbi.nlm.nih.gov/19325186/" target="_blank">One such study
+            </a>found that pop and rock songs were associated with high levels of endurance and energy, possibly due to
+            their upbeat nature.</h5>
+          <h5 class="center"><a
+              href="https://www.theguardian.com/music/shortcuts/2014/nov/11/can-listening-to-hip-hop-beat-depression"
+              target="_blank">Cambridge University psychologists </a>suggested that rap music could provide a
+            therapeutic listening experience, especially for those suffering with depression.</h5>
+          <h5 class="center"><a href="https://www.frontiersin.org/articles/10.3389/fnhum.2015.00272/full"
+              target="_blank">Finally, a group of neuroscientists </a>came to the conclusion that "intense" genres like
+            metal and punk have a calming effect on listeners.</h5>
+        </div>
+      </div>
+
+      <div class="divider"></div>
+
+      <div class="row">
+        <div class="col s12 m6">
+          <h3 style="color:#0FA6E8">Try Something New</h4>
+
+            <h6 class="center">Try listening to something new by selecting a genre from the dropdown below. A "starter"
+              playlist will replace the Spotify widget to the right and showcase the most essential songs from that
+              genre.</h6>
+
+            <select id="opbox">
+              <option value="" disabled selected>Select A Genre</option>
+              <option value="Rap/Hip Hop">Rap/Hip Hop</option>
+              <option value="Classical">Classical</option>
+              <option value="Rock">Rock</option>
+              <option value="Country">Country</option>
+              <option value="R&B">R&B</option>
+              <option value="Pop">Pop</option>
+              <option value="Electronic">Electronic</option>
+              <option value="Folk">Folk</option>
+            </select>
+            <label>Genre...</label>
+
+            <button class="btn waves-effect waves-light" type="submit" name="action" onclick="submitGenre()">Submit
+              <i class="material-icons right">send</i>
+            </button>
+
+            <h3 style="color:#0FA6E8">Advanced Search</h4>
+
+              <h6 class="center">For a bit more freedom, try typing in your own entry in the box below. The Spotify
+                widget will be replaced by the top playlist option from that search.</h6>
+            <form action='/clicked' method='post'>
+              <input placeholder="Search..." id="input" type="text" class="validate" name="query">
+              <button id='spotifySearch' class="btn waves-effect waves-light" type="submit" name="spotifySearch">Submit
+                <i class="material-icons right">send</i>
+              </button>
+            </form>
+              
+
+        </div>
+
+        <div class="col s12 m6">
+          <br><br>
+          <iframe id="iframeDisplay" src="https://open.spotify.com/embed/playlist/37i9dQZF1DXbITWG1ZJKYt" width="440"
+            height="480" frameborder="0" allowtransparency="true" allow="encrypted-media"></iframe>
+        </div>
+
+      </div>
+
+    </center>
+
+  </main>
+
+  <!--JavaScript at end of body for optimized loading-->
+  <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+  <script src="scripts/materialize.min.js"></script>
+  <script src="scripts/init.js"></script>
+  <script>
+
+    $(document).ready(function () {
+      $('select').formSelect();
+    });
+
+    function submitGenre() {
+      var oboxtext = document.getElementById("opbox").value;
+
+      if (oboxtext == "Rap/Hip Hop") {
+        document.getElementById("iframeDisplay").src = "https://open.spotify.com/embed/playlist/34QxATlnJTgezHvIJyedlW";
+      }
+
+      if (oboxtext == "Classical") {
+        document.getElementById("iframeDisplay").src = "https://open.spotify.com/embed/playlist/2uY8d5Z04NBdB7I1VaXfyA";
+      }
+
+      if (oboxtext == "Rock") {
+        document.getElementById("iframeDisplay").src = "https://open.spotify.com/embed/playlist/3J1daCtkRMA64XipQZFEI4";
+      }
+
+      if (oboxtext == "Country") {
+        document.getElementById("iframeDisplay").src = "https://open.spotify.com/embed/playlist/3cnsSaM8AbtPzVCQmta8mB";
+      }
+
+      if (oboxtext == "R&B") {
+        document.getElementById("iframeDisplay").src = "https://open.spotify.com/embed/playlist/26by5DpfDHncyZwQ1OEhWE";
+      }
+
+      if (oboxtext == "Pop") {
+        document.getElementById("iframeDisplay").src = "https://open.spotify.com/embed/playlist/5sKElvuQIS1iioj1VGeHS4";
+      }
+
+      if (oboxtext == "Electronic") {
+        document.getElementById("iframeDisplay").src = "https://open.spotify.com/embed/playlist/3UFbNBKXwQDUYsUWkMhjhz";
+      }
+
+      if (oboxtext == "Folk") {
+        document.getElementById("iframeDisplay").src = "https://open.spotify.com/embed/playlist/1t9E1HzC4jwOlsvV1006jo";
+      }
+
+    }
+
+  </script>
+
+</body>
+
+</html>
