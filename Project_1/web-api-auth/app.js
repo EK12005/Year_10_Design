@@ -25,8 +25,7 @@ var redirect_uri = "http://localhost:3000/callback"; // Your redirect uri
  */
 var generateRandomString = function (length) {
   var text = "";
-  var possible =
-    "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
+  var possible = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
 
   for (var i = 0; i < length; i++) {
     text += possible.charAt(Math.floor(Math.random() * possible.length));
@@ -173,7 +172,7 @@ app.post("/clicked", (req, res) => {
         url: "https://api.spotify.com/v1/search",
         qs: {
           q: searchData.query,
-          type: "artist",
+          type: "playlist",
           market: "US",
           limit: "1",
           offset: "5",
@@ -181,14 +180,14 @@ app.post("/clicked", (req, res) => {
         method: "GET",
         headers: {
           Authorization:
-            "Bearer BQBQTnUJz_g6NbmD5nOJ7vYIMKE7nJWON7l3gaNNJzAxMRfe3udx5d4ILT84rPhPxbjQT_As7NP1RABZ8iz-xOxm4XTIkqfQDKQ2VW0eJp150OK-1EALD2TrAZXDwNxXEkGwKJ1konvacj6MWoRhek3Q8yI7oHQnLKk",
+            "Bearer BQB3ASVQjE6MeNr9FVDnatuG6vuM0FDRQ7WpApbDbU76GA_-cj1vC-w6I-JsU27uvU_GCJBlPVzydxuVULDtH-Zr6u8kETML-WmtDeCkroQhw-mZcQMdHS8KxSEHkCVkvKI_pLn_dCmM13mZPBeWEQanTWJPa-E",
         },
         json: true,
       };
 
       request(authOptions, function (error, response, body) {
         console.log(body);
-        res.send(body);
+        res.send(body.playlists.items[0].external_urls.spotify)
     });
   });
 }
@@ -196,3 +195,5 @@ app.post("/clicked", (req, res) => {
 
 console.log("Listening on 3000");
 app.listen(3000);
+
+
