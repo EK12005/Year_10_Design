@@ -5,7 +5,7 @@
   <!--Import Google Icon Font-->
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
   <!--Import materialize.css-->
-  <link rel="stylesheet" href="scripts/materialize.min.css" media="screen,projection" />
+  <link type="text/css" rel="stylesheet" href="scripts/materialize.min.css" media="screen,projection" />
   <!--Let browser know website is optimized for mobile-->
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
@@ -112,13 +112,12 @@
 
               <h6 class="center">For a bit more freedom, try typing in your own entry in the box below. The Spotify
                 widget will be replaced by the top playlist option from that search.</h6>
-            <form action='/clicked' method='post'>
-              <input placeholder="Search..." id="input" type="text" class="validate" name="query">
-              <button id='spotifySearch' class="btn waves-effect waves-light" type="submit" name="spotifySearch">Submit
+
+              <input placeholder="Search..." id="query" type="text" class="validate">
+
+              <button class="btn waves-effect waves-light" type="submit" name="action" onclick="searchSpotify()">Submit
                 <i class="material-icons right">send</i>
               </button>
-            </form>
-              
 
         </div>
 
@@ -180,6 +179,39 @@
       }
 
     }
+
+    function searchSpotify() {
+      var query = document.getElementById("query").value
+      var url = "https://api.spotify.com/v1/search?q=" + query + "&type=playlist&market=US&limit=1&offset=5"
+      var authOptions = {
+        method: "GET",
+        headers: {
+          Authorization:
+            "Bearer <YOUR TOKEN> <++>"
+        },
+      };
+      fetch(url, authOptions)
+        .then(res => res.json())
+        .then(data => {
+          href = data.playlists.items[0].external_urls.spotify.replace("playlist", "embed/playlist")
+          console.log(href)
+          //https://open.spotify.com/playlist/6S6JMN9twB4MgGwomGMVML
+          //https://open.spotify.com/embed/playlist/1t9E1HzC4jwOlsvV1006jo
+          document.getElementById("iframeDisplay").src = href;
+        }).catch(err => {
+          console.error('Error', err);
+        });
+    }
+    function generateString(length) {
+      var text = "";
+      var possible =
+        "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
+
+      for (var i = 0; i < length; i++) {
+        text += possible.charAt(Math.floor(Math.random() * possible.length));
+      }
+      return text;
+    };
 
   </script>
 

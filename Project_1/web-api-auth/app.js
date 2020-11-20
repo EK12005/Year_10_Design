@@ -155,44 +155,5 @@ app.get("/refresh_token", function (req, res) {
     }
   });
 });
-
-app.post("/clicked", (req, res) => {
-  var searchData = "";
-
-  if (req.method === "POST") {
-    let body = "";
-    req.on("data", (chunk) => {
-      body += chunk.toString();
-    });
-
-
-    req.on("end", () => {
-      searchData = parse(body);
-
-      var authOptions = {
-        url: "https://api.spotify.com/v1/search",
-        qs: {
-          q: searchData.query,
-          type: "artist",
-          market: "US",
-          limit: "1",
-          offset: "5",
-        },
-        method: "GET",
-        headers: {
-          Authorization:
-            "Bearer BQBQTnUJz_g6NbmD5nOJ7vYIMKE7nJWON7l3gaNNJzAxMRfe3udx5d4ILT84rPhPxbjQT_As7NP1RABZ8iz-xOxm4XTIkqfQDKQ2VW0eJp150OK-1EALD2TrAZXDwNxXEkGwKJ1konvacj6MWoRhek3Q8yI7oHQnLKk",
-        },
-        json: true,
-      };
-
-      request(authOptions, function (error, response, body) {
-        console.log(body);
-        res.send(body);
-    });
-  });
-}
-});
-
 console.log("Listening on 3000");
 app.listen(3000);
