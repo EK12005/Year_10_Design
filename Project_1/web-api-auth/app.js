@@ -155,45 +155,6 @@ app.get("/refresh_token", function (req, res) {
   });
 });
 
-app.post("/clicked", (req, res) => {
-  var searchData = "";
-
-  if (req.method === "POST") {
-    let body = "";
-    req.on("data", (chunk) => {
-      body += chunk.toString();
-    });
-
-
-    req.on("end", () => {
-      searchData = parse(body);
-
-      var authOptions = {
-        url: "https://api.spotify.com/v1/search",
-        qs: {
-          q: searchData.query,
-          type: "playlist",
-          market: "US",
-          limit: "1",
-          offset: "5",
-        },
-        method: "GET",
-        headers: {
-          Authorization:
-            "Bearer BQB3ASVQjE6MeNr9FVDnatuG6vuM0FDRQ7WpApbDbU76GA_-cj1vC-w6I-JsU27uvU_GCJBlPVzydxuVULDtH-Zr6u8kETML-WmtDeCkroQhw-mZcQMdHS8KxSEHkCVkvKI_pLn_dCmM13mZPBeWEQanTWJPa-E",
-        },
-        json: true,
-      };
-
-      request(authOptions, function (error, response, body) {
-        console.log(body);
-        res.send(body.playlists.items[0].external_urls.spotify)
-    });
-  });
-}
-});
-
 console.log("Listening on 3000");
 app.listen(3000);
-
 

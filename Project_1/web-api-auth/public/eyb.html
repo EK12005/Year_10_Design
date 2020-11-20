@@ -74,7 +74,7 @@
               href="https://www.theguardian.com/music/shortcuts/2014/nov/11/can-listening-to-hip-hop-beat-depression"
               target="_blank">Cambridge University psychologists </a>suggested that rap music could provide a
             therapeutic listening experience, especially for those suffering with depression.</h5>
-          <h5 class="center"><a href="https://www.frontiersin.org/articles/10.3389/fnhum.2015.00272/full"
+          <h5 class="center"><a href="https://www.frontiersin.org articles/10.3389/fnhum.2015.00272/full"
               target="_blank">Finally, a group of neuroscientists </a>came to the conclusion that "intense" genres like
             metal and punk have a calming effect on listeners.</h5>
         </div>
@@ -108,12 +108,11 @@
             <h3 style="color:#0FA6E8">Advanced Search</h4>
 
               <h6 class="center">For a bit more freedom, try typing in your own entry in the box below. The Spotify widget will be replaced by the top playlist option from that search.</h6>
-              <form action='/clicked' method='post'>
-              <input placeholder="Search..." id="input" type="text" class="validate" name="query">
-              <button id='spotifySearch' class="btn waves-effect waves-light" type="submit" name="spotifySearch">Submit
-                <i class="material-icons right">send</i>
+              <input placeholder="Search..." id="query" type="text" class="validate">
+
+              <button onclick="searchSpotify()" class="btn waves-effect waves-light" type="submit">Submit
+              <i class="material-icons right">send</i>
               </button>
-            </form>
         </div>
 
         <div class="col s12 m6">
@@ -169,6 +168,30 @@
         document.getElementById("iframeDisplay").src = "https://open.spotify.com/embed/playlist/1t9E1HzC4jwOlsvV1006jo";
       }
 
+    }
+
+    function searchSpotify() {
+      var query = document.getElementById("query").value
+      var url = "https://api.spotify.com/v1/search?q=" + query + "&type=playlist&market=US&limit=1&offset=5"
+      var authOptions = {
+        method: "GET",
+        headers: {
+          Authorization:
+            "Bearer BQDpUK2sWtLDBfh78jzMmlQyF-59FqeqIY7m_d7B-ILkL4R1moS70GlRtFxiJWLhz7fBbvrh7VwStKxMp9UwxRhK0-eZtWntaQ7Xu2iVRCeqqF0YkB1uXkxnz77ZtLJ7EGZ1t3t8DK-s_mvPXNCYhm5q1ZNbrcE"
+        },
+      };
+      
+      fetch(url, authOptions)
+        .then(res => res.json())
+        .then(data => {
+          href = data.playlists.items[0].external_urls.spotify.replace("playlist", "embed/playlist")
+          console.log(href)
+          //https://open.spotify.com/playlist/6S6JMN9twB4MgGwomGMVML
+          //https://open.spotify.com/embed/playlist/1t9E1HzC4jwOlsvV1006jo
+          document.getElementById("iframeDisplay").src = href;
+        }).catch(err => {
+          console.error('Error', err);
+        });
     }
 
   </script>
