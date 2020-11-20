@@ -177,7 +177,7 @@
         method: "GET",
         headers: {
           Authorization:
-            "Bearer BQDpUK2sWtLDBfh78jzMmlQyF-59FqeqIY7m_d7B-ILkL4R1moS70GlRtFxiJWLhz7fBbvrh7VwStKxMp9UwxRhK0-eZtWntaQ7Xu2iVRCeqqF0YkB1uXkxnz77ZtLJ7EGZ1t3t8DK-s_mvPXNCYhm5q1ZNbrcE"
+            "Bearer BQDE8NCKf_fXLpJudiF14e7J0FMS2ohE9KhXz8fkJC1GF-62r79QTp4WRCq4gp48GR0jGCrA_YDI4jllk_TnFF43TWtTDH2jV0n6uAC4t_fz8lIEI9N9f13x0uJQuB_ztxNDD1nwcRzC2XE_5R2RC3tbvd49MJ2Bozp00W5yxBfwIB8oXQ"
         },
       };
       
@@ -186,8 +186,8 @@
         .then(data => {
           href = data.playlists.items[0].external_urls.spotify.replace("playlist", "embed/playlist")
           console.log(href)
-          //https://open.spotify.com/playlist/6S6JMN9twB4MgGwomGMVML
-          //https://open.spotify.com/embed/playlist/1t9E1HzC4jwOlsvV1006jo
+          //without the .replace: https://open.spotify.com/playlist/6S6JMN9twB4MgGwomGMVML
+          //with the .replace: https://open.spotify.com/embed/playlist/1t9E1HzC4jwOlsvV1006jo
           document.getElementById("iframeDisplay").src = href;
         }).catch(err => {
           console.error('Error', err);
