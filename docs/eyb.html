@@ -65,18 +65,24 @@
             <img src="https://cdn.statcdn.com/Infographic/images/normal/15763.jpeg" width="506" height="368">
         </div>
         <div class="col s12 m6">
+
           <br><br><br>
+
           <h5 class="center">Not only has the effect of listening to music in general been studied, the impact of different genres and types of music has also been an interest of researchers.</h5>
+
           <h5 class="center"><a href="https://pubmed.ncbi.nlm.nih.gov/19325186/" target="_blank">One such study
             </a>found that pop and rock songs were associated with high levels of endurance and energy, possibly due to
-            their upbeat nature.</h5>
+            their upbeat nature.</h5> <!--added the target="_blank" so that it opens up a new tab !-->
+
           <h5 class="center"><a
               href="https://www.theguardian.com/music/shortcuts/2014/nov/11/can-listening-to-hip-hop-beat-depression"
               target="_blank">Cambridge University psychologists </a>suggested that rap music could provide a
-            therapeutic listening experience, especially for those suffering with depression.</h5>
+            therapeutic listening experience, especially for those suffering with depression.</h5> <!--added the target="_blank" so that it opens up a new tab !-->
+
           <h5 class="center"><a href="https://www.frontiersin.org/articles/10.3389/fnhum.2015.00272/full"
               target="_blank">Finally, a group of neuroscientists </a>came to the conclusion that "intense" genres like
-            metal and punk have a calming effect on listeners.</h5>
+            metal and punk have a calming effect on listeners.</h5> <!--added the target="_blank" so that it opens up a new tab !-->
+
         </div>
       </div>
 
@@ -88,7 +94,7 @@
 
             <h6 class="center">Try listening to something new by selecting a genre from the dropdown below. A "starter" playlist will replace the Spotify widget to the right and showcase the most essential songs from that genre.</h6>
 
-            <select id="opbox">
+            <select id="opbox"> <!--gives optionbox id opbox !-->
               <option value="" disabled selected>Select A Genre</option>
               <option value="Rap/Hip Hop">Rap/Hip Hop</option>
               <option value="Classical">Classical</option>
@@ -108,6 +114,7 @@
             <h3 style="color:#0FA6E8">Advanced Search</h4>
 
               <h6 class="center">For a bit more freedom, try typing in your own entry in the box below. The Spotify widget will be replaced by the top playlist option from that search.</h6>
+
               <input placeholder="Search..." id="query" type="text" class="validate">
 
               <button onclick="searchSpotify()" class="btn waves-effect waves-light" type="submit">Submit
@@ -116,9 +123,12 @@
         </div>
 
         <div class="col s12 m6">
+
           <br><br>
+
           <iframe id="iframeDisplay" src="https://open.spotify.com/embed/playlist/37i9dQZF1DXbITWG1ZJKYt" width="480"
             height="400" frameborder="0" allowtransparency="true" allow="encrypted-media"></iframe>
+
         </div>
 
       </div>
@@ -134,63 +144,62 @@
   <script>
 
     function submitGenre() {
-      var oboxtext = document.getElementById("opbox").value;
+      var oboxtext = document.getElementById("opbox").value; //takes value of optionbox
 
       if (oboxtext == "Rap/Hip Hop") {
-        document.getElementById("iframeDisplay").src = "https://open.spotify.com/embed/playlist/34QxATlnJTgezHvIJyedlW";
+        document.getElementById("iframeDisplay").src = "https://open.spotify.com/embed/playlist/34QxATlnJTgezHvIJyedlW"; //changes source of iframe based on optionbox entry
       }
 
       if (oboxtext == "Classical") {
-        document.getElementById("iframeDisplay").src = "https://open.spotify.com/embed/playlist/2uY8d5Z04NBdB7I1VaXfyA";
+        document.getElementById("iframeDisplay").src = "https://open.spotify.com/embed/playlist/2uY8d5Z04NBdB7I1VaXfyA"; //changes source of iframe based on optionbox entry
       }
 
       if (oboxtext == "Rock") {
-        document.getElementById("iframeDisplay").src = "https://open.spotify.com/embed/playlist/3J1daCtkRMA64XipQZFEI4";
+        document.getElementById("iframeDisplay").src = "https://open.spotify.com/embed/playlist/3J1daCtkRMA64XipQZFEI4"; //changes source of iframe based on optionbox entry
       }
 
       if (oboxtext == "Country") {
-        document.getElementById("iframeDisplay").src = "https://open.spotify.com/embed/playlist/3cnsSaM8AbtPzVCQmta8mB";
+        document.getElementById("iframeDisplay").src = "https://open.spotify.com/embed/playlist/3cnsSaM8AbtPzVCQmta8mB"; //changes source of iframe based on optionbox entry
       }
 
       if (oboxtext == "R&B") {
-        document.getElementById("iframeDisplay").src = "https://open.spotify.com/embed/playlist/26by5DpfDHncyZwQ1OEhWE";
+        document.getElementById("iframeDisplay").src = "https://open.spotify.com/embed/playlist/26by5DpfDHncyZwQ1OEhWE"; //changes source of iframe based on optionbox entry
       }
 
       if (oboxtext == "Pop") {
-        document.getElementById("iframeDisplay").src = "https://open.spotify.com/embed/playlist/5sKElvuQIS1iioj1VGeHS4";
+        document.getElementById("iframeDisplay").src = "https://open.spotify.com/embed/playlist/5sKElvuQIS1iioj1VGeHS4"; //changes source of iframe based on optionbox entry
       }
 
       if (oboxtext == "Electronic") {
-        document.getElementById("iframeDisplay").src = "https://open.spotify.com/embed/playlist/3UFbNBKXwQDUYsUWkMhjhz";
+        document.getElementById("iframeDisplay").src = "https://open.spotify.com/embed/playlist/3UFbNBKXwQDUYsUWkMhjhz"; //changes source of iframe based on optionbox entry
       }
 
       if (oboxtext == "Folk") {
-        document.getElementById("iframeDisplay").src = "https://open.spotify.com/embed/playlist/1t9E1HzC4jwOlsvV1006jo";
+        document.getElementById("iframeDisplay").src = "https://open.spotify.com/embed/playlist/1t9E1HzC4jwOlsvV1006jo"; //changes source of iframe based on optionbox entry
       }
 
     }
 
     function searchSpotify() {
       var query = document.getElementById("query").value
-      var url = "https://api.spotify.com/v1/search?q=" + query + "&type=playlist&market=US&limit=1&offset=5"
+      var url = "https://api.spotify.com/v1/search?q=" + query + "&type=playlist&market=US&limit=1&offset=5" //creates search URL
       var authOptions = {
         method: "GET",
         headers: {
           Authorization:
-            "Bearer <ACCESS TOKEN>"
+            "Bearer <ACCESS TOKEN>" //access token goes here
         },
       };
       
-      fetch(url, authOptions)
+      fetch(url, authOptions) //fetches data
         .then(res => res.json())
         .then(data => {
-          href = data.playlists.items[0].external_urls.spotify.replace("playlist", "embed/playlist")
-          console.log(href)
+          href = data.playlists.items[0].external_urls.spotify.replace("playlist", "embed/playlist") //finds correct spotify playlist link
           //without the .replace: https://open.spotify.com/playlist/6S6JMN9twB4MgGwomGMVML
           //with the .replace: https://open.spotify.com/embed/playlist/1t9E1HzC4jwOlsvV1006jo
-          document.getElementById("iframeDisplay").src = href;
+          document.getElementById("iframeDisplay").src = href; //changes iframe src to href
         }).catch(err => {
-          console.error('Error', err);
+          console.error('Error', err); //if there is an error it logs it
         });
     }
 
