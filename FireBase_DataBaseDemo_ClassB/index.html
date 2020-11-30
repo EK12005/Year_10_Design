@@ -1,17 +1,17 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>Firebase Database Demo</title>
+	<title>Firebase Database Demo B</title>
 
-	<!-- Compiled and minified CSS -->
+ 	<!-- Compiled and minified CSS -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
-            
+
+          
 </head>
 <body>
 
-<div class = "container">
+	<div class = "container">
 
-		<br/>
 
 		<a class="waves-effect waves-light btn">Once</a>
 
@@ -36,88 +36,103 @@
 		<br/>
 		
 		<div id = "live">
-			<p>Live Update</p>
+			<p id = "pdisplay">Live Update</p>
 		</div>
 
 	</div>
 
+  <!-- Compiled and minified JavaScript -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+    
 
 	<!-- The core Firebase JS SDK is always required and must be listed first -->
 	<script src="https://www.gstatic.com/firebasejs/8.1.1/firebase-app.js"></script>
 
 	<!-- TODO: Add SDKs for Firebase products that you want to use
-	     https://firebase.google.com/docs/web/setup#available-libraries -->
+	 https://firebase.google.com/docs/web/setup#available-libraries -->
 	<script src="https://www.gstatic.com/firebasejs/8.1.1/firebase-analytics.js"></script>
 
-	<!-- ADDED: COPY OTHER IMPORT AND CHANGE TO DATABASE !-->
 	<script src="https://www.gstatic.com/firebasejs/8.1.1/firebase-database.js"></script>
-
-	<!-- Compiled and minified JavaScript -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
 
 	<script>
 
-	  // Your web app's Firebase configuration
-	  // For Firebase JS SDK v7.20.0 and later, measurementId is optional
-	  var firebaseConfig = {
+		// Your web app's Firebase configuration
+		// For Firebase JS SDK v7.20.0 and later, measurementId is optional
+		var firebaseConfig = {
 
-	    apiKey: "AIzaSyCocbFNd60hcZuomW1_jrzSaT-0NaXMimY",
-	    authDomain: "design10-firebasebpm-2a1c5.firebaseapp.com",
-	    databaseURL: "https://design10-firebasebpm-2a1c5.firebaseio.com",
-	    projectId: "design10-firebasebpm-2a1c5",
-	    storageBucket: "design10-firebasebpm-2a1c5.appspot.com",
-	    messagingSenderId: "605717327024",
-	    appId: "1:605717327024:web:fe62694746b46fc2131f75",
-	    measurementId: "G-91TPHZJC99"
+			apiKey: "AIzaSyCocbFNd60hcZuomW1_jrzSaT-0NaXMimY",
+	    	authDomain: "design10-firebasebpm-2a1c5.firebaseapp.com",
+	    	databaseURL: "https://design10-firebasebpm-2a1c5.firebaseio.com",
+	    	projectId: "design10-firebasebpm-2a1c5",
+	    	storageBucket: "design10-firebasebpm-2a1c5.appspot.com",
+	    	messagingSenderId: "605717327024",
+	    	appId: "1:605717327024:web:fe62694746b46fc2131f75",
+	    	measurementId: "G-91TPHZJC99"
+		
+		};
 
-	  };
-	  // Initialize Firebase
-	  firebase.initializeApp(firebaseConfig);
-	  firebase.analytics();
+		// Initialize Firebase
+		firebase.initializeApp(firebaseConfig);
+		firebase.analytics();
+	
+		var database = firebase.database();
 
-	  //THIS GOES OUT AND GETS A REFERENCE TO THE DATABASE
-	  var database = firebase.database();
+		/*********WRITING DATA*/
+		function writeUserData(userId, name, food) {
+		
+			data = {
+
+				name: name,
+				food: food,
+			}
+			
+
+			database.ref('users/' + userId).set(data);
+		}
+
+		console.log("test")
+
+		/*******************ON COMMAND*******************/
+		var userUpdate = database.ref('users/');
+
+		//Option 2: 
+		//This will create a new p tag for every entry in our database
+		//With this approach you could equally build any elemnt 
+		//gives me a reference to our div with id live
+		var display = document.getElementById("live")
+
+		//event/trigger --> 'value' - Reseved word that means whe something changes. 
+		function onChange(snapshot) {
+
+			const data = snapshot.val();
+			display.innerHTML = ""
+			//console.log(data["01"]);
+			//var str = "" //1
+			//This will loop through every object
+			for (key in data){
+				//console.log(data[key]["name"])
+				//Build some HTML elements and put that on your page.
+				//Option 1: Build a a big string and then paste it in
+				//str = str + data[key]["name"]+" : "+data[key]["food"] + "\n" //1
+			
+				//This is a way to tell the bowser to create a new elemen
+				//This element is not only disay
+				p = document.createElement("p"); //2
+
+				//Update the p tag
+				p.innerHTML = data[key]["name"] +" loves " + data[key]["food"]
+
+				//append to a section as a child
+				display.appendChild(p)
+			}
+			//console.log(str) //1
+			//document.getElementById("pdisplay").innerHTML = str //1
+		}
+
+		userUpdate.on('value',onChange);
 
 
-	  //WRITING DATA
-	  function writeUserData(userId, name, food) {
 
-	  	data = {
-
-	  		name: name,
-    		food: food,
-
-	  	}
-
-  		database.ref('users/' + userId).set(data);
-
-  	  }
-
-  	console.log("test")
-  	writeUserData("03","Edwin","Spaghetti")
-  	writeUserData("04","Noah","Har Gow")
-
-  	//ON COMMAND
-  	var userUpdate = database.ref('users/');
-
-  	//event --> value - reserved word that means when something changes.
-  	function onChange(snapshot) {
-
-  		const data = snapshot.val();
-  		//console.log(data["01"]);
-
-  		//If I can writea loop I can access each one
-
-  		for (key in data) {
-  			console.log(data[key])
-  			//Build some HTML elements and put that on your page.
-  		}
-
-  	}
-
-  	userUpdate.on('value',onChange);
-
-	</script>
-
+</script>
 </body>
 </html>
