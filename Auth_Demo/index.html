@@ -1,17 +1,25 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>Fake Login Class B</title>
+	<title>
+		Upper School Basketball: Official Website
+	</title>
 
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 </head>
 <body>
 
+<!--
+LANDING PAGE
+-->
 	<div id = "landing" class = "container">
-		<h2>Login</h2>
-		<a href = "#modal-login" class = "btn orange modal-trigger">LOGIN</a>
-	</div>
+		<center><br><br><br>
+		<h2>Login to Upper School Basketball: Official Website</h2><br><br>
+		<img src="https://upload.wikimedia.org/wikipedia/en/thumb/7/7a/Upper_Canada_College_Crest.svg/1200px-Upper_Canada_College_Crest.svg.png" height="400" width="450">
+		<br><br><br><br>
+		<a href = "#modal-login" class ="btn-large modal-trigger orange darken-4">LOGIN</a>
+		</div>
 
 	<div id = "modal-login" class = "modal">
   		<div class = "modal-content">
@@ -26,21 +34,76 @@
 	        		<label for = "login-password">Choose password</label>
 	      		</div>
 	      
-	      		<button class = "btn yellow darken-2 z-depth-0">Login</button>
+	      		<button class = "btn orange darken-4 z-depth-0">Login</button>
 	    	</form>
   		</div>
   	</div>
 
-  	<script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+<!--
+TEAM INFO PAGE
+-->
+  	<div id = "home" display = "none">
+
+  		<ul id="dropdown1" class="dropdown-content">
+  			<li><a href="#!">U14</a></li>
+        <li><a href="#!">U16B</a></li>
+        <li><a href="#!">U16A</a></li>
+        <li><a href="#!">Varsity</a></li>
+		</ul>
+		<nav>
+  			<div class="nav-wrapper orange darken-4">
+    			<a href="#!" class="brand-logo">Upper School Basketball: Official Website</a>
+    			<ul class="right hide-on-med-and-down">
+     			<li class="active"><a href="#!">Team Info</a></li>
+      			<li><a onclick="drills()" id="drills_btn">Drills</a></li>
+      			<li><a class="dropdown-trigger" href="#!" data-target="dropdown1">Discussion Board
+      				<i class="material-icons right">arrow_drop_down</i></a></li>
+      			<li><a class="waves-effect waves-light btn orange darken-3" id="logout_btn">Log Out</a></li>
+    			</ul>
+  			</div>
+		</nav>
+
+  	</div>
+
+<!--
+DRILLS PAGE
+-->
+
+  	 <div id = "drills" display = "none">
+  	 	<ul id="dropdown2" class="dropdown-content">
+  			<li><a href="#!">U14</a></li>
+  			<li><a href="#!">U16B</a></li>
+			  <li><a href="#!">U16A</a></li>
+        <li><a href="#!">Varsity</a></li>
+		</ul>
+		<nav>
+  			<div class="nav-wrapper orange darken-4">
+    			<a href="#!" class="brand-logo">Upper School Basketball: Official Website</a>
+    			<ul class="right hide-on-med-and-down">
+     			<li><a onclick="tinfo()" id="teaminfo_btn">Team Info</a></li>
+      			<li class="active"><a href="#!">Drills</a></li>
+      			<li><a class="dropdown-trigger" href="#!" data-target="dropdown2">Discussion Board
+      				<i class="material-icons right">arrow_drop_down</i></a></li>
+      			<li><a onclick = "logout()"class="waves-effect waves-light btn orange darken-3" id="logout_btn">Log Out</a></li>
+    			</ul>
+  			</div>
+		</nav>
+
+ 	  <!-- Compiled and minified JavaScript -->
+ 	<script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
   	<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-beta/js/materialize.min.js"></script>
-	<script src = "scripts/index.js"></script>
-	<script>
-		 $(document).ready(function(){
-    		$('.modal').modal();
-  		});
-	</script>
+  	<script src="scripts/index.js"></script>
+  	<script>
 
+  		$(".dropdown-trigger").dropdown();
+    
+
+    	$(document).ready(function(){
+      		$('.modal').modal();
+      		$('.sidenav').sidenav();
+
+   		});
+
+   	</script>
 </body>
-
-
 </html>
