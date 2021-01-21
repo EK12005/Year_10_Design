@@ -1,9 +1,12 @@
+$(".dropdown-trigger").dropdown();
+    
+
 $(document).ready(function(){
-    $('.parallax').parallax();
-  });
+    $('.modal').modal();
+    $('.sidenav').sidenav();
 
-$('.dropdown-trigger').dropdown();
+});
 
-$(document).ready(function () {
-    $('select').formSelect();
+$(document).ready(function(){
+    $('.collapsible').collapsible();
   });

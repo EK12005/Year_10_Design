@@ -1,162 +1,450 @@
 <!DOCTYPE html>
-  <html>
-    <head>
-      <!--Import Google Icon Font-->
-      <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-      <!--Import materialize.css-->
-      <link type="text/css" rel="stylesheet" href="scripts/materialize.min.css" media="screen,projection"/>
-      <!--Let browser know website is optimized for mobile-->
-      <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<html>
+<head>
+	<title>
+		Upper School Basketball: Official Website
+	</title>
 
-      <style>
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+</head>
+<body>
 
-      .page-footer {
-        	background-color: #0FA6E8;
-   		}
+<!--
+LANDING PAGE
+-->
+	
+  <div id = "landing" class = "container">
+		<center><br><br><br>
+		<h2>Login to Upper School Basketball: Official Website</h2><br><br>
+		<img src="images/UpperCanada.png" height="400" width="450">
+		<br><br><br><br>
+		<a href = "#modal-login" class ="btn-large modal-trigger orange darken-4">LOGIN</a>
+		</div>
 
-   		.nav-wrapper {
-   			background-color: #0FA6E8;
-   		}
+	<div id = "modal-login" class = "modal">
+  		<div class = "modal-content">
+	    	<h4>Login</h4><br/>
+	    	<form id = "login-form">
+	      		<div class = "input-field">
+	        		<input type = "email" id = "login-email" autocomplete="" required/>
+	        		<label for= "login-email">Email Address</label>
+	      		</div>
+	      		<div class = "input-field">
+	        		<input type = "password" id="login-password" autocomplete=""required/>
+	        		<label for = "login-password">Choose password</label>
+	      		</div>
+	      
+	      		<button class = "btn orange darken-4 z-depth-0">Login</button>
+	    	</form>
+  		</div>
+  	</div>
 
-   		body {
-    		display: flex;
-    		min-height: 100vh;
-    		flex-direction: column;
- 		}
+<!--
+TEAM INFO PAGE
+-->
+  <div id = "home" display = "none">
 
-  		main {
-    		flex: 1 0 auto;
-  		}
+  	<ul id="dropdown1" class="dropdown-content">
+      <li><a href="#!" class="red-text text-darken-4">U14</a></li>
+      <li class="divider"></li>
+      <li><a href="#!" class="red-text text-darken-4">U16B</a></li>
+      <li class="divider"></li>
+      <li><a href="#!" class="red-text text-darken-4">U16A</a></li>
+      <li class="divider"></li>
+      <li><a href="#!" class="red-text text-darken-4">Varsity</a></li>
+		</ul>
+		<nav>
+  		<div class="nav-wrapper orange darken-4">
+    		<a class="brand-logo">&nbsp; Upper School Basketball: Official Website</a>
+    		<ul class="right hide-on-med-and-down">
+     		<li class="active"><a href="#!">Team Info</a></li>
+      		<li><a onclick="drills()" id="drills_btn">Drills</a></li>
+      		<li><a class="dropdown-trigger" href="#!" data-target="dropdown1">Discussion Board
+      		<i class="material-icons right">arrow_drop_down</i></a></li>
+      		<li><a class="waves-effect waves-light btn orange darken-3" id="logout_btn">Log Out</a></li>
+    		</ul>
+  		</div>
+		</nav>
 
-  		mark {
-  			background-color: #6588bf;
-  			color: black;
-		}
+  <center>
 
-		img {
-			box-shadow: 8px 8px 4px grey;
-		}
+    <h2>Team Information</h2>
 
-      </style>
-    </head>
+    <p>Click on a Bar to show the Information for a specific Team:</p>
 
-    <body>
+  </center>
 
-    	<header>
+  <div class = "container">
 
-    		<nav class = "blue">
-    			<div class="nav-wrapper">
-      				<a href="#" class="brand-logo center">Home</a>
-      				<ul id="nav-mobile" class="left hide-on-med-and-down">
-        				<li class="active"><a href="index.html">Home</a></li>
-        				<li><a href="eyb.html">Expanding Your Boundaries</a></li>
-      				</ul>
-   			 	</div>
-  			</nav>
+    <center>
 
-  		</header>
+      <ul class="collapsible">
 
-  		<main>
-  		<center>
+        <li>
+          <div class="collapsible-header orange darken-4"><b style="color:white;">U14</b></div>
+          <div class="collapsible-body">
 
-			<div id="index-banner" class="parallax-container">
-   	 			<div class="section no-pad-bot">
-      				<div class="container">
-      					<br><br><br><br><br>
-        				<h3 class="header center white-text text-lighten-2">Why Should You Listen to Music?</h1>
-        				<br>
-        				<div class="row center">
-          					<h5 class="header col s12 light" style="color:white;">A Website on the Importance of Auditory Stimulation</h5>
-        				</div>
-        				<br><br>
-      				</div>
-    			</div>
-    			<div class="parallax">
-    				<img src="https://cdn.vox-cdn.com/thumbor/cECjM1jDnEGVQsc2yMEQnlziQqw=/0x0:2040x1360/1200x800/filters:focal(857x517:1183x843)/cdn.vox-cdn.com/uploads/chorus_image/image/66599270/cwelch_191024_3759_0009.0.jpg">
-    			</div>
+            <h5>Coaches</h5>
+
+            <div class="row">
+
+              <div class="col s12 m6">
+
+                <img src="https://st3.depositphotos.com/13159112/17145/v/600/depositphotos_171453724-stock-illustration-default-avatar-profile-icon-grey.jpg" height="150" width="150">
+                <p>Email: test1@ucc.on.ca</p>
+                <p>Phone Number: XXX-XXX-XXXX</p>
+
+              </div>
+
+              <div class="col s12 m6">
+
+                <img src="https://st3.depositphotos.com/13159112/17145/v/600/depositphotos_171453724-stock-illustration-default-avatar-profile-icon-grey.jpg" height="150" width="150">
+                <p>Email: test2@ucc.on.ca</p>
+                <p>Phone Number: XXX-XXX-XXXX</p>
+
+              </div>
+
+            </div>
+
+            <div class="divider"></div>
+
+              <h5>Schedule</h5>
+              <table>
+                <thead>
+                  <tr>
+                    <th>Home</th>
+                    <th>Away</th>
+                    <th>Directions</th>
+                  </tr>
+                </thead>
+
+                <tbody>
+                  <tr>
+                    <td>Upper Canada College</td>
+                    <td>Royal St. George's College</td>
+                    <td><a class="waves-effect waves-light btn orange darken-4">Route</a></td>
+                  </tr>
+                  <tr>
+                    <td>Upper Canada College</td>
+                    <td>St. Michael's College School</td>
+                    <td><a class="waves-effect waves-light btn orange darken-4">Route</a></td>
+                  </tr>
+                  <tr>
+                    <td>Crescent School</td>
+                    <td>Upper Canada College</td>
+                    <td><a class="waves-effect waves-light btn orange darken-4">Route</a></td>
+                  </tr>
+                </tbody>
+              </table>
+
+              <div class="divider"></div>
+
+              <h5>W-L Record</h5>
+
+              <table>
+                <thead>
+                  <tr>
+                    <th>Wins</th>
+                    <th>Losses</th>
+                    <th>Pct%</th>
+                  </tr>
+                </thead>
+
+                <tbody>
+                  <tr>
+                    <td>X</td>
+                    <td>X</td>
+                    <td>.XXX%</td>
+                  </tr>
+                </tbody>
+              </table>
+
+          </li>
+
+          <li>
+          <div class="collapsible-header orange darken-4"><b style="color:white;">U16B</b></div>
+            <div class="collapsible-body">
+
+              <h5>Coaches</h5>
+
+              <div class="row">
+                <div class="col s12 m6">
+
+                  <img src="https://st3.depositphotos.com/13159112/17145/v/600/depositphotos_171453724-stock-illustration-default-avatar-profile-icon-grey.jpg" height="150" width="150">
+                  <p>Email: test1@ucc.on.ca</p>
+                  <p>Phone Number: XXX-XXX-XXXX</p>
+
+                </div>
+                <div class="col s12 m6">
+
+                  <img src="https://st3.depositphotos.com/13159112/17145/v/600/depositphotos_171453724-stock-illustration-default-avatar-profile-icon-grey.jpg" height="150" width="150">
+                  <p>Email: test2@ucc.on.ca</p>
+                  <p>Phone Number: XXX-XXX-XXXX</p>
+
+                </div>
+              </div>
+
+              <div class="divider"></div>
+
+              <h5>Schedule</h5>
+              <table>
+                <thead>
+                  <tr>
+                    <th>Home</th>
+                    <th>Away</th>
+                    <th>Directions</th>
+                  </tr>
+                </thead>
+
+                <tbody>
+                  <tr>
+                    <td>Upper Canada College</td>
+                    <td>Royal St. George's College</td>
+                    <td><a class="waves-effect waves-light btn orange darken-4">Route</a></td>
+                  </tr>
+                  <tr>
+                    <td>Upper Canada College</td>
+                    <td>St. Michael's College School</td>
+                    <td><a class="waves-effect waves-light btn orange darken-4">Route</a></td>
+                  </tr>
+                  <tr>
+                    <td>Crescent School</td>
+                    <td>Upper Canada College</td>
+                    <td><a class="waves-effect waves-light btn orange darken-4">Route</a></td>
+                  </tr>
+                </tbody>
+              </table>
+
+              <div class="divider"></div>
+
+              <h5>W-L Record</h5>
+
+              <table>
+                <thead>
+                  <tr>
+                    <th>Wins</th>
+                    <th>Losses</th>
+                    <th>Pct%</th>
+                  </tr>
+                </thead>
+
+                <tbody>
+                  <tr>
+                    <td>X</td>
+                    <td>X</td>
+                    <td>.XXX%</td>
+                  </tr>
+                </tbody>
+              </table>
+          </li>
+
+          <li>
+            <div class="collapsible-header orange darken-4"><b style="color:white;">U16A</b></div>
+            <div class="collapsible-body">
+
+              <h5>Coaches</h5>
+
+              <div class="row">
+                <div class="col s12 m6">
+
+                  <img src="https://st3.depositphotos.com/13159112/17145/v/600/depositphotos_171453724-stock-illustration-default-avatar-profile-icon-grey.jpg" height="150" width="150">
+                  <p>Email: test1@ucc.on.ca</p>
+                  <p>Phone Number: XXX-XXX-XXXX</p>
+
+                </div>
+                <div class="col s12 m6">
+
+                  <img src="https://st3.depositphotos.com/13159112/17145/v/600/depositphotos_171453724-stock-illustration-default-avatar-profile-icon-grey.jpg" height="150" width="150">
+                  <p>Email: test2@ucc.on.ca</p>
+                  <p>Phone Number: XXX-XXX-XXXX</p>
+
+                </div>
+              </div>
+
+              <div class="divider"></div>
+
+              <h5>Schedule</h5>
+              <table>
+                <thead>
+                  <tr>
+                    <th>Home</th>
+                    <th>Away</th>
+                    <th>Directions</th>
+                  </tr>
+                </thead>
+
+                <tbody>
+                  <tr>
+                    <td>Upper Canada College</td>
+                    <td>Royal St. George's College</td>
+                    <td><a class="waves-effect waves-light btn orange darken-4">Route</a></td>
+                  </tr>
+                  <tr>
+                    <td>Upper Canada College</td>
+                    <td>St. Michael's College School</td>
+                    <td><a class="waves-effect waves-light btn orange darken-4">Route</a></td>
+                  </tr>
+                  <tr>
+                    <td>Crescent School</td>
+                    <td>Upper Canada College</td>
+                    <td><a class="waves-effect waves-light btn orange darken-4">Route</a></td>
+                  </tr>
+                </tbody>
+              </table>
+
+              <div class="divider"></div>
+
+              <h5>W-L Record</h5>
+
+              <table>
+                <thead>
+                  <tr>
+                    <th>Wins</th>
+                    <th>Losses</th>
+                    <th>Pct%</th>
+                  </tr>
+                </thead>
+
+                <tbody>
+                  <tr>
+                    <td>X</td>
+                    <td>X</td>
+                    <td>.XXX%</td>
+                  </tr>
+                </tbody>
+              </table>
+          </li>
+
+          <li>
+            <div class="collapsible-header orange darken-4"><b style="color:white;">Varsity</b></div>
+            <div class="collapsible-body">
+
+              <h5>Coaches</h5>
+
+              <div class="row">
+                <div class="col s12 m6">
+
+                  <img src="https://st3.depositphotos.com/13159112/17145/v/600/depositphotos_171453724-stock-illustration-default-avatar-profile-icon-grey.jpg" height="150" width="150">
+                  <p>Email: test1@ucc.on.ca</p>
+                  <p>Phone Number: XXX-XXX-XXXX</p>
+
+                </div>
+                <div class="col s12 m6">
+
+                  <img src="https://st3.depositphotos.com/13159112/17145/v/600/depositphotos_171453724-stock-illustration-default-avatar-profile-icon-grey.jpg" height="150" width="150">
+                  <p>Email: test2@ucc.on.ca</p>
+                  <p>Phone Number: XXX-XXX-XXXX</p>
+
+                </div>
+              </div>
+
+              <div class="divider"></div>
+
+              <h5>Schedule</h5>
+              <table>
+                <thead>
+                  <tr>
+                    <th>Home</th>
+                    <th>Away</th>
+                    <th>Directions</th>
+                  </tr>
+                </thead>
+
+                <tbody>
+                  <tr>
+                    <td>Upper Canada College</td>
+                    <td>Royal St. George's College</td>
+                    <td><a class="waves-effect waves-light btn orange darken-4">Route</a></td>
+                  </tr>
+                  <tr>
+                    <td>Upper Canada College</td>
+                    <td>St. Michael's College School</td>
+                    <td><a class="waves-effect waves-light btn orange darken-4">Route</a></td>
+                  </tr>
+                  <tr>
+                    <td>Crescent School</td>
+                    <td>Upper Canada College</td>
+                    <td><a class="waves-effect waves-light btn orange darken-4">Route</a></td>
+                  </tr>
+                </tbody>
+              </table>
+
+              <div class="divider"></div>
+
+              <h5>W-L Record</h5>
+
+              <table>
+                <thead>
+                  <tr>
+                    <th>Wins</th>
+                    <th>Losses</th>
+                    <th>Pct%</th>
+                  </tr>
+                </thead>
+
+                <tbody>
+                  <tr>
+                    <td>X</td>
+                    <td>X</td>
+                    <td>.XXX%</td>
+                  </tr>
+                </tbody>
+              </table>
+          </li>
+
+        </ul>
+
+    </center>
+
+  </div>
+
+</div>
+
+<!--
+DRILLS PAGE
+-->
+
+  <div id = "drills" display = "none">
+  	<ul id="dropdown2" class="dropdown-content">
+      <li><a href="#!" class="red-text text-darken-4">U14</a></li>
+      <li class="divider"></li>
+      <li><a href="#!" class="red-text text-darken-4">U16B</a></li>
+      <li class="divider"></li>
+      <li><a href="#!" class="red-text text-darken-4">U16A</a></li>
+      <li class="divider"></li>
+      <li><a href="#!" class="red-text text-darken-4">Varsity</a></li>
+		</ul>
+		<nav>
+  			<div class="nav-wrapper orange darken-4">
+    			<a href="#!" class="brand-logo">&nbsp; Upper School Basketball: Official Website</a>
+    			<ul class="right hide-on-med-and-down">
+     			<li><a onclick="teaminfo()" id="teaminfo_btn">Team Info</a></li>
+      		<li class="active"><a href="#!">Drills</a></li>
+      		<li><a class="dropdown-trigger" href="#!" data-target="dropdown2">Discussion Board
+      		<i class="material-icons right">arrow_drop_down</i></a></li>
+      		<li><a onclick = "logout()"class="waves-effect waves-light btn orange darken-3" id="logout_btn">Log Out</a></li>
+    			</ul>
   			</div>
+		</nav>
 
-        <h3 style="color:#0FA6E8">Introduction</h4>
+    <center>
 
-        <br>
+      <h2>Drills</h2>
 
-      <div class="row">
-            <div class="col s12 m6">
-            	 <img src="https://ak.picdn.net/shutterstock/videos/12032663/thumb/10.jpg" width="506" height="368">
-            </div>
-            <div class="col s12 m6"><br>
-           		<h5>Since ancient times, music has been a large part of human culture and expression. Many studies have been done on the<br> benefits of learning to play an instrument and read music<br> early in one's life.</h5>
+    </center>
 
-        		<h5>However, the consumption and listening of music is often overlooked, and is therefore not seen as helpful as the actual <br>playing of an instrument. This website will explain why that is not the case, and hopefully give you an introduction<br> to the vast world of musical listening.</h5>
-        	</div>
-       </div>
+  </div>
 
-        <br>
+<!--
+DISCUSSION BOARD PAGE
+-->
 
-        <div class="divider"></div>
+ 	  <!-- Compiled and minified JavaScript -->
+ 	  <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+  	<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-beta/js/materialize.min.js"></script>
+  	<script src="scripts/index.js"></script>
+  	<script src="scripts/init.js"></script>
 
-        <h3 style="color:#0FA6E8">Physical Benefits</h4>
-
-        <div id="index-banner" class="parallax-container">
-            <div class="parallax">
-            <img src="https://media1.popsugar-assets.com/files/thumbor/uDE7UAko18ugL6S5xsh68UQWzCM/fit-in/2048xorig/filters:format_auto-!!-:strip_icc-!!-/2019/03/13/211/n/1922729/tmp_9lIDGo_6d2a02bc9b2b7d6f_GettyImages-200259790-001.jpg">
-          </div>
-        </div>
-
-        <br>
-
-        <div class="row">
-            <div class="col s12 m6">
-            	 <img src="https://www.vmcdn.ca/f/files/princegeorgematters/images/stock-photos/mountain-biking/37208281_1726024180826600_7641593718415294464_o.jpg;w=960" height="368">
-            </div>
-            <div class="col s12 m6"><br>
-           		<h5>There are more than a fair share of studies that discuss the effects of listening to music on athletic or training performance.</h5>
- 
-        		  <h5><a href="https://pubmed.ncbi.nlm.nih.gov/15532005/" target="_blank">A 2003 study </a>found that when listening to high-tempo music, participants biked a 10 km run approximately 22 seconds faster than those who did not listen to anything, signifying how fast tempo and rhythm could be used as a motivator for physical exercise.</h5> <!--added the target="_blank" so that it opens up a new tab !-->
-
-              <h5><a href="https://pubmed.ncbi.nlm.nih.gov/17090506/" target="_blank">Another study </a>found that when listening to music, a faster tempo or louder sound resulted in participants running at a faster pace on their treadmills.</h5> <!--added the target="_blank" so that it opens up a new tab !-->
-        	</div>
-       </div>
-
-        <br>
-
-        <div class="divider"></div>
-
-        <h3 style="color:#0FA6E8">Mental Benefits</h4>
-
-        <div id="index-banner" class="parallax-container">
-            <div class="parallax">
-            <img src="https://www.verywellmind.com/thmb/V-ndCGoakBOmabuA8ZDzAwtiJ6E=/1885x1414/smart/filters:no_upscale()/GettyImages-583825597-5aa602d518ba01003736d40f.jpg">
-          </div>
-        </div>
-
-        <br>
-
-        <div class="row">
-            <div class="col s12 m6">
-            	 <img src="https://www.webfx.com/blog/wp-content/uploads/2016/10/health-benefits-music-1.jpg" width="506" height="368">
-            </div>
-           <div class="col s12 m6"><br>
-              <h5>There is lots of evidence that music is beneficial to mental health.</h5>
- 
-              <h5>For example, <a href="https://www.nature.com/articles/nn.2726" target="_blank">a 2011 study</a> found that dopamine levels increased by 9% at a listener's emotional climax to an instrumental song, showcasing the correlation between the important neurotransmitter and the consumption of music.</h5> <!--added the target="_blank" so that it opens up a new tab !-->
-
-              <h5><a href="https://www.psychologytoday.com/us/blog/sleep-newzzz/201812/the-many-health-and-sleep-benefits-music" target="_blank">In addition, </a>soothing and relaxing music has been proven to aid sleep by triggering the release of neurotransmitters like serotonin and oxytocin.</h5> <!--added the target="_blank" so that it opens up a new tab !-->
-
-              <h5><a href="https://calmradio.com/en/calmlife/5771-does-sleep-music-and-sound-help-you-sleep-better" target="_blank">Visit this link for more information on the benefits of music when sleeping.</a></h5> <!--added the target="_blank" so that it opens up a new tab !-->
-          </div>
-       </div>
-
-        <br>
-
-  		</center>
-  		</main>
-
-        <!--JavaScript at end of body for optimized loading-->
-    	<script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
-  		<script src="scripts/materialize.min.js"></script>
-  		<script src="scripts/init.js"></script>
-
-    </body>
-  </html>
-
+</body>
+</html>
