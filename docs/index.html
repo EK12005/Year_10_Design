@@ -446,17 +446,64 @@ DISCUSSION BOARD PAGE
       </div>
     </nav>
 
-    <center>
+    <div class = "container">
 
-      <h2>Discussion Board</h2>
+      <br><br>
+
+      <center>
+
+      <a id = "onceBTN" class="red darken-2 waves-effect waves-light btn">Once</a>
 
     </center>
+
+    <center>
+
+      <h3>Post to the Message Board</h3>
+
+    </center>
+
+    <div id = "onClickDisplay" class = "row">
+    
+    </div>
+    
+    <input placeholder="Username" id="username" type="text" class="validate">
+    <label for="name">Username</label>
+    
+    <input placeholder="Input Message" id="message" type="text" class="validate">
+    <label for="name">Message Body</label>
+    
+    <br/>
+    <br/>
+
+    <center>
+    
+      <a id = "enter_dataBTN" class="red darken-2 waves-effect waves-light btn">Submit</a>
+
+    </center>
+    
+    <br/>
+    <br/>
+    
+    <center>
+
+      <h3>Discussion Board</h3>
+
+    </center>
+
+    <div id = "live" class = "row">
+
+    </div>
+
+    </div>
 
   </div>
 
  	  <!-- Compiled and minified JavaScript -->
  	  <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
   	<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-beta/js/materialize.min.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.1.1/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.1.1/firebase-analytics.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.1.1/firebase-database.js"></script>
   	<script src="scripts/index.js"></script>
   	<script src="scripts/init.js"></script>
 
