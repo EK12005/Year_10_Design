@@ -1,11 +1,10 @@
-//PAGE NAVIGATION
-
 var uNames = ["edwin.kim@ucc.on.ca"] //stores user names
 var pWords = ["1234"] //stores passwords
 var permissions = [0,0,0,0] //keeps track of permission levels
 var uName = null
 var pWord = null
 
+//PAGE NAVIGATION
 
 var landing_content = document.getElementById("landing")
 var home_content = document.getElementById("home")
@@ -51,7 +50,7 @@ function login(e) {
         discussionboard_content.style.display = "none";
     }
     else {
-        alert("Incorrect Email or Password");
+        M.toast({html: 'Incorrect Email or Password'})
     }
    
     const modal = document.querySelector('#modal-login');
