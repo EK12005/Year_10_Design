@@ -30,11 +30,11 @@ LANDING PAGE
 	    	<form id = "login-form">
 	      		<div class = "input-field">
 	        		<input type = "email" id = "login-email" autocomplete="" required/>
-	        		<label for= "login-email">Email Address</label>
+	        		<label for = "login-email">Email Address</label>
 	      		</div>
 	      		<div class = "input-field">
-	        		<input type = "password" id="login-password" autocomplete=""required/>
-	        		<label for = "login-password">Choose password</label>
+	        		<input type = "password" id="login-password" autocomplete="" required/>
+	        		<label for = "login-password">Password</label>
 	      		</div>
 	      
 	      		<button class = "btn red darken-2 z-depth-0">Login</button>
@@ -644,26 +644,24 @@ DISCUSSION BOARD PAGE
 
     <div class = "container">
 
-      <br><br>
-
-      <center>
-
-      <a id = "onceBTN" class="red darken-2 waves-effect waves-light btn">Once</a>
-
-    </center>
+    <br><br>
 
     <center>
 
-      <h3>Post to the Message Board</h3>
+      <h3>Create New Post</h3>
 
     </center>
 
-    <div id = "onClickDisplay" class = "row">
-    
-    </div>
-    
-    <input placeholder="Username" id="username" type="text" class="validate">
-    <label for="name">Username</label>
+    <select id="opbox">
+      <option value=""disabled selected>Select A Team</option>
+      <option value="U14">U14</option>
+      <option value="U16B">U16B</option>
+      <option value="U16A">U16A</option>
+      <option value="Varsity">Varsity</option>
+    </select>
+    <label>Genre...</label>
+
+    <br>
     
     <input placeholder="Input Message" id="message" type="text" class="validate">
     <label for="name">Message Body</label>
@@ -673,7 +671,7 @@ DISCUSSION BOARD PAGE
 
     <center>
     
-      <a id = "enter_dataBTN" class="red darken-2 waves-effect waves-light btn">Submit</a>
+      <a id = "enter_dataBTN" class="red darken-2 waves-effect waves-light btn-large">Submit</a>
 
     </center>
     
