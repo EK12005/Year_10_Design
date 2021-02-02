@@ -1,3 +1,5 @@
+//"AUTHENTICATION"
+
 var uNames = ["edwin.kim@ucc.on.ca"] //stores user names
 var pWords = ["1234"] //stores passwords
 var permissions = [0,0,0,0] //keeps track of permission levels
@@ -109,6 +111,101 @@ teaminfoBTN.addEventListener('click',teamInfo);
 const discussionboardBTN = document.getElementById("discussionboard_btn")
 discussionboardBTN.addEventListener('click',discussionBoard);
 
+//TEAM INFO DROPDOWN FUNCTION
+
+function createCollapsible() {
+
+    const collapsible =
+
+    `<h5>Coaches</h5>
+
+    <div class="row">
+        <div class="col s12 m6">
+
+            <img src="images/Placeholder.jpg" height="150" width="150">
+            <p>Email: test1@ucc.on.ca</p>
+            <p>Phone Number: XXX-XXX-XXXX</p>
+
+        </div>
+
+        <div class="col s12 m6">
+
+            <img src="images/Placeholder.jpg" width="150">
+            <p>Email: test2@ucc.on.ca</p>
+            <p>Phone Number: XXX-XXX-XXXX</p>
+
+        </div>
+
+    </div>
+
+    <div class="divider"></div>
+
+    <h5>Schedule</h5>
+
+    <table class="highlight">
+        <thead>
+            <tr>
+                <th>Home</th>
+                <th>Away</th>
+                <th>Directions</th>
+            </tr>
+        </thead>
+
+        <tbody>
+            <tr>
+                <td>Upper Canada College</td>
+                <td>Royal St. George's College</td>
+                <td><a class="waves-effect waves-light btn orange darken-4">Route</a></td>
+            </tr>
+            <tr>
+                <td>Upper Canada College</td>
+                <td>St. Michael's College School</td>
+                <td><a class="waves-effect waves-light btn orange darken-4">Route</a></td>
+            </tr>
+            <tr>
+                <td>Crescent School</td>
+                <td>Upper Canada College</td>
+                <td><a class="waves-effect waves-light btn orange darken-4">Route</a></td>
+            </tr>
+        </tbody>
+    </table>
+
+    <div class="divider"></div>
+
+    <h5>W-L Record</h5>
+
+    <table class="highlight">
+        <thead>
+            <tr>
+                <th>Wins</th>
+                <th>Losses</th>
+                <th>Pct%</th>
+            </tr>
+        </thead>
+
+        <tbody>
+            <tr>
+                <td>X</td>
+                <td>X</td>
+                <td>.XXX%</td>
+            </tr>
+        </tbody>
+    </table>`
+
+return collapsible
+
+}
+
+const teamInfoDropdown1 = document.getElementById("collapsiblefunction1")
+const teamInfoDropdown2 = document.getElementById("collapsiblefunction2")
+const teamInfoDropdown3 = document.getElementById("collapsiblefunction3")
+const teamInfoDropdown4 = document.getElementById("collapsiblefunction4")
+
+teamInfoDropdown1.innerHTML = createCollapsible()
+teamInfoDropdown2.innerHTML = createCollapsible()
+teamInfoDropdown3.innerHTML = createCollapsible()
+teamInfoDropdown4.innerHTML = createCollapsible()
+
 //FIREBASE PULL AND CARD CREATION
 
 var firebaseConfig = {
@@ -160,6 +257,7 @@ function createCard(u,m) {
 }
             
 /*********************WRITING DATA**********************/
+
 function writeUserData(userId, username, message) {
 
     data = {
