@@ -148,7 +148,8 @@ function createCard(u,m) {
                         <div class="card small orange darken-4">
                             <div class="card-content white-text">
                                 <span class="card-title"><h4>${u}</h4></span>
-                                <p>Message : ${m}</p>
+                                <h5>U16B</h5>
+                                <p>Message: ${m}</p>
                                 <br>
                                 <a class="waves-effect waves-light btn white" style="color:black;">Delete</a>
                             </div>
