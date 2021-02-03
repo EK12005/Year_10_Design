@@ -62,29 +62,29 @@ function login(e) {
 function logout() {
     uName = null
     pWord = null
-    home_content.style.display = "none";
     landing_content.style.display = "block";
+    home_content.style.display = "none";
     drills_content.style.display = "none";
     discussionboard_content.style.display = "none";
 }
 
 function teamInfo() {
-    home_content.style.display = "block";
     landing_content.style.display = "none";
+    home_content.style.display = "block";
     drills_content.style.display = "none";
     discussionboard_content.style.display = "none";
 }
 
 function drills() {
-    home_content.style.display = "none";
     landing_content.style.display = "none";
+    home_content.style.display = "none";
     drills_content.style.display = "block";
     discussionboard_content.style.display = "none";
 }
 
 function discussionBoard() {
-    home_content.style.display = "none";
     landing_content.style.display = "none";
+    home_content.style.display = "none";
     drills_content.style.display = "none";
     discussionboard_content.style.display = "block";
 }
