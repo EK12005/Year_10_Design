@@ -2,7 +2,7 @@
 <html>
 <head>
 	<title>
-		Upper School Basketball: Official Website
+    Upper School Basketball: Official Website
 	</title>
 
   <link href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css" rel="stylesheet">
@@ -51,47 +51,50 @@ TEAM INFO PAGE
 -->
 
   <div id = "home" display = "none">
-		<nav>
-  		<div class="nav-wrapper red darken-2">
-    		<a class="brand-logo">&nbsp; Upper School Basketball: Official Website</a>
-    		<ul class="right hide-on-med-and-down">
-     		<li class="active"><a onclick="teamInfo()" id="teaminfo_btn">Team Info</a></li>
-      		<li><a onclick="drills()" id="drills_btn">Drills</a></li>
+    <nav>
+      <div class="nav-wrapper red darken-2">
+
+        <a class="brand-logo">&nbsp; Upper School Basketball: Official Website</a>
+
+        <ul class="right hide-on-med-and-down">
+          <li class="active"><a onclick="teamInfo()" id="teaminfo_btn">Team Info</a></li>
+          <li><a onclick="drills()" id="drills_btn">Drills</a></li>
           <li><a onclick="discussionBoard()" id="discussionboard_btn">Discussion Board</a></li>
-      		<li><a onclick="logout()" class="waves-effect waves-light btn white" id="logout_btn" style="color:black;">Log Out</a></li>
-    		</ul>
-  		</div>
-		</nav>
+          <li><a onclick="logout()" class="waves-effect waves-light btn white" id="logout_btn" style="color:black;">Log Out</a></li>
+        </ul>
 
-  <center>
-
-    <h2>Team Information</h2>
-
-    <img src="images/UCCGym.jpg" id="boxshadow" length="800" height="500">
-
-    <br><br><br>
-
-    <div class="divider"></div>
-
-    <br>
-
-    <h5>Click on a bar to show the information for a specific team:</h5>
-
-    <br>
-
-  </center>
-
-  <div class = "container">
+      </div>
+    </nav>
 
     <center>
 
-      <ul class="collapsible" id = "collapsibleConstant"></ul>
+      <h2>Team Information</h2>
 
-    </center> 
+      <img src="images/UCCGym.jpg" id="boxshadow" length="800" height="500">
+
+      <br><br><br>
+
+      <div class="divider"></div>
+
+      <br>
+
+      <h5>Click on a bar to show the information for a specific team:</h5>
+
+      <br>
+
+    </center>
+
+    <div class = "container">
+
+      <center>
+
+        <ul class="collapsible" id = "collapsibleConstant"></ul>
+
+      </center> 
+
+    </div>
 
   </div>
-
-</div>
 
 <!--
 DRILLS PAGE
