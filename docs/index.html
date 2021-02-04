@@ -5,9 +5,9 @@
     Upper School Basketball: Official Website
 	</title>
 
+  <link href="scripts/stylesheet.css" rel="stylesheet">
   <link href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css" rel="stylesheet">
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-  <link href="scripts/stylesheet.css" rel="stylesheet">
 
 </head>
 <body>
@@ -22,7 +22,7 @@ LANDING PAGE
 		<img src="images/UpperCanada.png" height="400" width="450">
 		<br><br><br><br>
 		<a href = "#modal-login" class ="btn-large modal-trigger red darken-2">LOGIN</a>
-		</div>
+  </div>
 
   <div id = "modal-login" class = "modal">
 
@@ -70,7 +70,7 @@ TEAM INFO PAGE
 
       <h2>Team Information</h2>
 
-      <img src="images/UCCGym.jpg" id="boxshadow" length="800" height="500">
+      <img src="images/UCCGym.jpg" id="boxshadow" width="800" height="500">
 
       <br><br><br>
 
@@ -117,7 +117,7 @@ DRILLS PAGE
 
         <h2>Drills</h2>
 
-        <img src="images/Drills.jpg" id="boxshadow" length="800" height="500">
+        <img src="images/Drills.jpg" id="boxshadow" width="800" height="500">
 
         <br><br><br>
 
@@ -323,6 +323,7 @@ DISCUSSION BOARD PAGE
 -->
 
   <div id = "discussionboard" display = "none">
+
     <nav>
       <div class="nav-wrapper red darken-2">
         <a class="brand-logo">&nbsp; Upper School Basketball: Official Website</a>
@@ -335,55 +336,65 @@ DISCUSSION BOARD PAGE
       </div>
     </nav>
 
-    <div class = "container">
+    <center>
+
+      <h2>Discussion Board</h2>
+
+      <img src="images/DiscussionBoard.png" id="boxshadow" width="800" height="500">
+
+      <br><br><br>
+
+      <div class="divider"></div>
+
+      <br>
+
+      <h5>Click on the button to post to the discussion board:</h5>
+
+      <br>
+
+      <a href = "#modal-posting" class ="btn-large modal-trigger red darken-2">Post to Message Board</a>
+
+      <div class = "modal" id = "modal-posting">
+
+      <div class = "modal-content">
+        <h4>Post to Message Board</h4><br/>       
+        <form>
+
+          <div class = "input-field">
+
+            <select id="opbox">
+              <option value="" disabled selected>Select A Team</option>
+              <option value="U14" >U14</option>
+              <option value="U16B" >U16B</option>
+              <option value="U16A" >U16A</option>
+              <option value="Varsity">Varsity</option>
+            </select>
+
+          </div>
+
+          <div class = "input-field">
+
+            <input placeholder="Message" id="message" type="text" class="validate">
+
+          </div>
+
+          <a id = "enter_dataBTN" class="modal-close red darken-2 waves-effect waves-light btn">Submit</a>
+
+        </form>
+      </div>
+    </div>
 
     <br><br>
 
-    <center>
+    <h5>The messages are organized from oldest to newest:</h5>
 
-      <h3>Create New Post</h3>
+    <br>
 
     </center>
 
-    <div class="red-text text-darken-4">
+    <div class = "container">
 
-      <select id="opbox">
-        <option value="" disabled selected class="red-text text-darken-4">Select A Team</option>
-        <option value="U14" class="red-text text-darken-4">U14</option>
-        <option value="U16B" class="red-text text-darken-4">U16B</option>
-        <option value="U16A" class="red-text text-darken-4">U16A</option>
-        <option value="Varsity" class="red-text text-darken-4">Varsity</option>
-      </select>
-      <label>Genre...</label>
-
-    </div>
-
-    <br>
-    
-    <input placeholder="Input Message" id="message" type="text" class="validate">
-    <label for="name">Message Body</label>
-    
-    <br>
-    <br>
-
-    <center>
-    
-      <a id = "enter_dataBTN" class="red darken-2 waves-effect waves-light btn-large">Submit</a>
-
-    </center>
-    
-    <br>
-    <br>
-    
-    <center>
-
-      <h3>Discussion Board</h3>
-
-    </center>
-
-    <div id = "live" class = "row">
-
-    </div>
+      <div id = "live" class = "row"></div>
 
     </div>
 

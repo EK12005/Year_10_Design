@@ -1,13 +1,7 @@
 $(document).ready(function(){
+
     $('.modal').modal();
-    $('.sidenav').sidenav();
+	$('.collapsible').collapsible();
+	$('select').formSelect();
 
 });
-
-$(document).ready(function(){
-    $('.collapsible').collapsible();
-  });
-
-$(document).ready(function () {
-    $('select').formSelect();
-  });

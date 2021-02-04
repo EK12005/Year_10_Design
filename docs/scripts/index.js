@@ -120,7 +120,7 @@ function createCollapsible(teamname) {
                     <div class="col s12 m6">
 
                         <img src="images/Placeholder.jpg" height="150" width="150">
-                        <p>Email: test1@ucc.on.ca</p>
+                        <p>Email: coach1@ucc.on.ca</p>
                         <p>Phone Number: XXX-XXX-XXXX</p>
 
                     </div>
@@ -128,7 +128,7 @@ function createCollapsible(teamname) {
                     <div class="col s12 m6">
 
                         <img src="images/Placeholder.jpg" width="150">
-                        <p>Email: test2@ucc.on.ca</p>
+                        <p>Email: coach2@ucc.on.ca</p>
                         <p>Phone Number: XXX-XXX-XXXX</p>
 
                     </div>
@@ -256,19 +256,19 @@ var database = firebase.database();
 var display = document.getElementById("live")
 var submitBTN = document.getElementById("enter_dataBTN")
 
-var userUpdate = database.ref('users')
+var userUpdate = database.ref('posts')
 
     
 
 /********************** GENERAL FUNCTIONS *****************/
 
-function createCard(username,message) {
+function createCard(username,teamname,message) {
 
     const html = `<div class="col s12">
                         <div class="card small orange darken-4">
                             <div class="card-content white-text">
                                 <span class="card-title"><h4>${username}</h4></span>
-                                <h5>U16B</h5>
+                                <h5>${teamname}</h5>
                                 <p>Message: ${message}</p>
                                 <br>
                                 <a class="waves-effect waves-light btn white" style="color:black;">Delete</a>
@@ -281,22 +281,33 @@ function createCard(username,message) {
             
 /********************* WRITING DATA **********************/
 
-function writeUserData(userId, username, message) {
+function writeUserData(userId, username, teamname, message) {
 
     data = {
 
         username: username,
+        teamname: teamname,
         message: message,
 
     }
 
-    database.ref('users/' + userId).set(data);
+    database.ref('posts/' + userId).set(data);
 
 }
 
 function enterData() {
 
     username = uName
+
+    if (document.getElementById("opbox").value === "") {
+
+        M.toast({html: 'Error: You Must Select a Team'}) //error checking: ensures no posts with no teamname label
+
+
+    } else {
+
+        teamname = document.getElementById("opbox").value
+    }
 
     if (document.getElementById("message").value === "") {
 
@@ -307,10 +318,10 @@ function enterData() {
         message = document.getElementById("message").value
 
         // Get a key for a new post
-        var newUserKey = database.ref().child('users').push().key;
+        var newUserKey = database.ref().child('posts').push().key;
 
         //console.log(newUserKey)
-        writeUserData(newUserKey,username,message)
+        writeUserData(newUserKey,username,teamname,message)
 
     }
             
@@ -329,7 +340,7 @@ function onChange(snapshot) {
     //This will loop through every object
         
     d = document.createElement("div")
-    d.innerHTML = createCard(data["username"],data["message"])
+    d.innerHTML = createCard(data["username"],data["teamname"],data["message"])
     display.appendChild(d)
             
 }
