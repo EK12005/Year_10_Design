@@ -2,7 +2,6 @@
 
 var uNames = ["edwin.kim@ucc.on.ca"] //stores user names
 var pWords = ["1234"] //stores passwords
-var permissions = [0,0,0,0] //keeps track of permission levels
 var uName = null
 var pWord = null
 
@@ -36,8 +35,8 @@ function checkCred(name,pwd) {
 function login(e) {
 
     e.preventDefault() //stops page from reloading
-    const email =  loginForm['login-email'].value;
-    const password = loginForm['login-password'].value;
+    const email =  loginForm["login-email"].value;
+    const password = loginForm["login-password"].value;
     loginForm.reset();
 
     if (checkCred(email,password) === true) {
@@ -51,10 +50,10 @@ function login(e) {
         console.log(uName)
     }
     else {
-        M.toast({html: 'Incorrect Email or Password'})
+        M.toast({html: "Incorrect Email or Password"})
     }
    
-    const modal = document.querySelector('#modal-login');
+    const modal = document.querySelector("#modal-login");
     M.Modal.getInstance(modal).close();
     
 }
@@ -89,20 +88,20 @@ function discussionBoard() {
     discussionboard_content.style.display = "block";
 }
 
-const loginForm = document.querySelector('#login-form')
-loginForm.addEventListener('submit',login);
+const loginForm = document.querySelector("#login-form")
+loginForm.addEventListener("submit",login);
 
 const logout_BTN = document.getElementById("logout_btn")
-logout_BTN.addEventListener('click',logout);
+logout_BTN.addEventListener("click",logout);
 
 const drillsBTN = document.getElementById("drills_btn")
-drillsBTN.addEventListener('click',drills);
+drillsBTN.addEventListener("click",drills);
 
 const teaminfoBTN = document.getElementById("teaminfo_btn")
-teaminfoBTN.addEventListener('click',teamInfo);
+teaminfoBTN.addEventListener("click",teamInfo);
 
 const discussionboardBTN = document.getElementById("discussionboard_btn")
-discussionboardBTN.addEventListener('click',discussionBoard);
+discussionboardBTN.addEventListener("click",discussionBoard);
 
 //********************* TEAM INFO COLLAPSIBLE FUNCTION (REPETITVE HTML) ******************/
 
@@ -247,41 +246,41 @@ var firebaseConfig = {
 // Initialize Firebase
 firebase.initializeApp(firebaseConfig);
 firebase.analytics();
-        
 
 //********************* GENERAL ELEMENTS ******************/
 
 var database = firebase.database();
         
 var display = document.getElementById("live")
+
 var submitBTN = document.getElementById("enter_dataBTN")
 
-var userUpdate = database.ref('posts')
+var postsUpdate = database.ref('posts')
 
     
 
 /********************** GENERAL FUNCTIONS *****************/
 
-function createCard(username,teamname,message) {
+function createCard(username,teamname,message,newPostKey) {
 
-    const html = `<div class="col s12">
+    const card = `<div class="col s12">
                         <div class="card small orange darken-4">
                             <div class="card-content white-text">
                                 <span class="card-title"><h4>${username}</h4></span>
                                 <h5>${teamname}</h5>
                                 <p>Message: ${message}</p>
                                 <br>
-                                <a class="waves-effect waves-light btn white" style="color:black;">Delete</a>
+                                <a class="waves-effect waves-light btn white" name = ${newPostKey} style="color:black;" onclick = "deleteData()">Delete</a>
                             </div>
                         </div>
                     </div>`
             
-    return html
+    return card
 }
             
 /********************* WRITING DATA **********************/
 
-function writeUserData(userId, username, teamname, message) {
+function writePostData(userId, username, teamname, message) {
 
     data = {
 
@@ -301,7 +300,7 @@ function enterData() {
 
     if (document.getElementById("opbox").value === "") {
 
-        M.toast({html: 'Error: You Must Select a Team'}) //error checking: ensures no posts with no teamname label
+        M.toast({html: "Error: You Must Select a Team"}) //error checking: ensures no posts with no teamname label
 
 
     } else {
@@ -311,17 +310,17 @@ function enterData() {
 
     if (document.getElementById("message").value === "") {
 
-        M.toast({html: 'Error: Message Input Must Be Filled'}) //error checking: ensures no posts with empty message body
+        M.toast({html: "Error: Message Body Must Be Filled"}) //error checking: ensures no posts with empty message body
 
     } else {
 
         message = document.getElementById("message").value
 
         // Get a key for a new post
-        var newUserKey = database.ref().child('posts').push().key;
+        var newPostKey = database.ref().child('posts').push().key;
+        console.log(newPostKey)
 
-        //console.log(newUserKey)
-        writeUserData(newUserKey,username,teamname,message)
+        writePostData(newPostKey,username,teamname,message,newPostKey)
 
     }
             
@@ -335,14 +334,21 @@ submitBTN.addEventListener("click",enterData)
 function onChange(snapshot) {
 
     const data = snapshot.val();
-            
-
-    //This will loop through every object
         
     d = document.createElement("div")
     d.innerHTML = createCard(data["username"],data["teamname"],data["message"])
     display.appendChild(d)
+    
             
 }
 
-userUpdate.on('child_added', onChange)
+postsUpdate.on("child_added", onChange)
+
+
+function deleteData(e) {
+
+    console.log(e)
+
+   database.ref(`/posts/`).remove()
+
+}
