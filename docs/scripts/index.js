@@ -1,7 +1,7 @@
 //********************* AUTHENTICATION AND PAGE NAVIGATION ******************/
 
-var uNames = ["edwin.kim@ucc.on.ca"] //stores user names
-var pWords = ["1234"] //stores passwords
+var uNames = ["edwin.kim@ucc.on.ca","chicken@chicken.com"] //stores user names
+var pWords = ["1234","1234"] //stores passwords
 var uName = null
 var pWord = null
 
@@ -338,17 +338,33 @@ function onChange(snapshot) {
     d = document.createElement("div")
     d.innerHTML = createCard(data["username"],data["teamname"],data["message"])
     display.appendChild(d)
-    
+
             
 }
 
 postsUpdate.on("child_added", onChange)
 
 
-function deleteData(e) {
+function deleteData() {
 
-    console.log(e)
+    const email =  loginForm["login-email"].value
 
-   database.ref(`/posts/`).remove()
+    console.log(email)
+
+    uName = email
+
+    username = uName
+
+    console.log(uName)
+
+    if (uName === username) {
+
+        database.ref(`/posts/`).remove()
+
+    } else {
+
+        M.toast({html: "Incorrect Email or Password"})
+        
+    }
 
 }
