@@ -16,20 +16,20 @@ discussionboard_content.style.display = "none";
 
 
 function getUser() {
-	return uName;
+    return uName;
 }
 
 function checkCred(name,pwd) {
 
-	for (i = 0; i < uNames.length; i = i + 1) {
-		if (uNames[i] === name) {
-			if (pWords[i] == pwd) {
-				return true;
-			}
-			return false;
-		}
-	}
-	return false;
+    for (i = 0; i < uNames.length; i = i + 1) {
+        if (uNames[i] === name) {
+            if (pWords[i] == pwd) {
+                return true;
+            }
+            return false;
+        }
+    }
+    return false;
 }
 
 function login(e) {
@@ -247,8 +247,6 @@ var firebaseConfig = {
 firebase.initializeApp(firebaseConfig);
 firebase.analytics();
 
-//********************* GENERAL ELEMENTS ******************/
-
 var database = firebase.database();
         
 var display = document.getElementById("live")
@@ -257,11 +255,7 @@ var submitBTN = document.getElementById("enter_dataBTN")
 
 var postsUpdate = database.ref('posts')
 
-    
-
-/********************** GENERAL FUNCTIONS *****************/
-
-function createCard(username,teamname,message,newPostKey) {
+function createCard(username,teamname,message,key) {
 
     const card = `<div class="col s12">
                         <div class="card small orange darken-4">
@@ -270,15 +264,13 @@ function createCard(username,teamname,message,newPostKey) {
                                 <h5>${teamname}</h5>
                                 <p>Message: ${message}</p>
                                 <br>
-                                <a class="waves-effect waves-light btn white" id = ${newPostKey} style="color:black;" onclick = "deleteData()">Delete</a>
+                                <a class="waves-effect waves-light btn white" id = ${key} style="color:black;">Delete</a>
                             </div>
                         </div>
                     </div>`
             
     return card
 }
-            
-/********************* WRITING DATA **********************/
 
 function writePostData(userId, username, teamname, message) {
 
@@ -302,51 +294,53 @@ function enterData() {
 
         M.toast({html: "Error: You Must Select a Team"}) //error checking: ensures no posts with no teamname label
 
+    } else if (document.getElementById("message").value === "") {
+
+        M.toast({html: "Error: Message Body Must Be Filled"}) //error 
 
     } else {
 
         teamname = document.getElementById("opbox").value
-    }
-
-    if (document.getElementById("message").value === "") {
-
-        M.toast({html: "Error: Message Body Must Be Filled"}) //error checking: ensures no posts with empty message body
-
-    } else {
 
         message = document.getElementById("message").value
 
-        // Get a key for a new post
         var newPostKey = database.ref().child('posts').push().key;
-        console.log(newPostKey)
 
-        writePostData(newPostKey,username,teamname,message,newPostKey)
+        writePostData(newPostKey,username,teamname,message)
+
+        post_form.reset()
 
     }
             
 }
-        
+     
 submitBTN.addEventListener("click",enterData)
-
-
-/******************* ON COMMAND *******************/
         
 function onChange(snapshot) {
 
     const data = snapshot.val();
         
     d = document.createElement("div")
-    d.innerHTML = createCard(data["username"],data["teamname"],data["message"])
+    key = snapshot.key
+    d.id = key+"c"
+
+    d.innerHTML = createCard(data["username"],data["teamname"],data["message"],snapshot.key)
     display.appendChild(d)
 
-            
+    btn = document.getElementById(key)
+    btn.onclick = deleteElement;
+
 }
 
 postsUpdate.on("child_added", onChange)
 
 
-function deleteData() {
+function deleteElement() {
 
-console.log("it's not working yet lol")
+    div = document.getElementById(this.id+"c")
+    ref = database.ref(/posts/+this.id)
+
+    div.remove();
+    ref.remove();
 
 }

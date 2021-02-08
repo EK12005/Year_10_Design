@@ -247,8 +247,6 @@ var firebaseConfig = {
 firebase.initializeApp(firebaseConfig);
 firebase.analytics();
 
-//********************* GENERAL ELEMENTS ******************/
-
 var database = firebase.database();
         
 var display = document.getElementById("live")
@@ -266,35 +264,13 @@ function createCard(username,teamname,message,key) {
                                 <h5>${teamname}</h5>
                                 <p>Message: ${message}</p>
                                 <br>
-                                <a class="waves-effect waves-light btn white" id = ${key} name = ${key} style="color:black;" onclick = "deleteElement()">Delete</a>
+                                <a class="waves-effect waves-light btn white" id = ${key} style="color:black;">Delete</a>
                             </div>
                         </div>
                     </div>`
             
     return card
 }
-
-
-document.addEventListener('DOMContentLoaded', function() {
-    options = {}
-    var elems = document.querySelectorAll('.modal');
-    var instances = M.Modal.init(elems, options);
-});
-
-function onChange(snapshot) {
-
-    data = snapshot.val();
-    key = snapshot.key //gets the key
-    console.log(key)
-        
-    d = document.createElement("div")
-    d.id = key+"c"
-    d.innerHTML = createCard(data["username"],data["teamname"],data["message"])
-    display.appendChild(d)
-            
-}
-
-postsUpdate.on("child_added", onChange)
 
 function writePostData(userId, username, teamname, message) {
 
@@ -318,39 +294,54 @@ function enterData() {
 
         M.toast({html: "Error: You Must Select a Team"}) //error checking: ensures no posts with no teamname label
 
+    } else if (document.getElementById("message").value === "") {
+
+        M.toast({html: "Error: Message Body Must Be Filled"}) //error 
 
     } else {
 
         teamname = document.getElementById("opbox").value
-    }
-
-    if (document.getElementById("message").value === "") {
-
-        M.toast({html: "Error: Message Body Must Be Filled"}) //error checking: ensures no posts with empty message body
-
-    } else {
 
         message = document.getElementById("message").value
 
-        // Get a key for a new post
         var newPostKey = database.ref().child('posts').push().key;
 
         writePostData(newPostKey,username,teamname,message)
 
+        post_form.reset()
+
     }
             
 }
-        
+     
 submitBTN.addEventListener("click",enterData)
+        
+function onChange(snapshot) {
+
+    const data = snapshot.val();
+        
+    d = document.createElement("div")
+    key = snapshot.key
+    d.id = key+"c"
+
+    d.innerHTML = createCard(data["username"],data["teamname"],data["message"],snapshot.key)
+    display.appendChild(d)
+
+    btn = document.getElementById(key)
+    btn.onclick = deleteElement;
+
+}
+
+postsUpdate.on("child_added", onChange)
 
 
 function deleteElement() {
-    //This is the implied object, that is who called the function
-        
-    console.log(this.id) 
-    div = document.getElementById(this.id+"c")
-    div.remove()
 
+    div = document.getElementById(this.id+"c")
     ref = database.ref(/posts/+this.id)
+
+    div.remove();
     ref.remove();
+
+
 }
