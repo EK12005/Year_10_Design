@@ -144,6 +144,7 @@
   <script>
 
     function submitGenre() {
+
       var oboxtext = document.getElementById("opbox").value; //takes value of optionbox
 
       if (oboxtext == "Rap/Hip Hop") {
@@ -181,13 +182,14 @@
     }
 
     function searchSpotify() {
+
       var query = document.getElementById("query").value
       var url = "https://api.spotify.com/v1/search?q=" + query + "&type=playlist&market=US&limit=1&offset=5" //creates search URL
       var authOptions = {
         method: "GET",
         headers: {
           Authorization:
-            "Bearer <ACCESS TOKEN>" //access token goes here
+            "Bearer ACCESS TOKEN" //access token goes here
         },
       };
       

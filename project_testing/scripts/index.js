@@ -16,20 +16,20 @@ discussionboard_content.style.display = "none";
 
 
 function getUser() {
-	return uName;
+    return uName;
 }
 
 function checkCred(name,pwd) {
 
-	for (i = 0; i < uNames.length; i = i + 1) {
-		if (uNames[i] === name) {
-			if (pWords[i] == pwd) {
-				return true;
-			}
-			return false;
-		}
-	}
-	return false;
+    for (i = 0; i < uNames.length; i = i + 1) {
+        if (uNames[i] === name) {
+            if (pWords[i] == pwd) {
+                return true;
+            }
+            return false;
+        }
+    }
+    return false;
 }
 
 function login(e) {
@@ -257,11 +257,7 @@ var submitBTN = document.getElementById("enter_dataBTN")
 
 var postsUpdate = database.ref('posts')
 
-    
-
-/********************** GENERAL FUNCTIONS *****************/
-
-function createCard(username,teamname,message,newPostKey) {
+function createCard(username,teamname,message,key) {
 
     const card = `<div class="col s12">
                         <div class="card small orange darken-4">
@@ -270,15 +266,35 @@ function createCard(username,teamname,message,newPostKey) {
                                 <h5>${teamname}</h5>
                                 <p>Message: ${message}</p>
                                 <br>
-                                <a class="waves-effect waves-light btn white" id = ${newPostKey} style="color:black;" onclick = "deleteData()">Delete</a>
+                                <a class="waves-effect waves-light btn white" id = ${key} name = ${key} style="color:black;" onclick = "deleteElement()">Delete</a>
                             </div>
                         </div>
                     </div>`
             
     return card
 }
+
+
+document.addEventListener('DOMContentLoaded', function() {
+    options = {}
+    var elems = document.querySelectorAll('.modal');
+    var instances = M.Modal.init(elems, options);
+});
+
+function onChange(snapshot) {
+
+    data = snapshot.val();
+    key = snapshot.key //gets the key
+    console.log(key)
+        
+    d = document.createElement("div")
+    d.id = key+"c"
+    d.innerHTML = createCard(data["username"],data["teamname"],data["message"])
+    display.appendChild(d)
             
-/********************* WRITING DATA **********************/
+}
+
+postsUpdate.on("child_added", onChange)
 
 function writePostData(userId, username, teamname, message) {
 
@@ -318,9 +334,8 @@ function enterData() {
 
         // Get a key for a new post
         var newPostKey = database.ref().child('posts').push().key;
-        console.log(newPostKey)
 
-        writePostData(newPostKey,username,teamname,message,newPostKey)
+        writePostData(newPostKey,username,teamname,message)
 
     }
             
@@ -329,24 +344,13 @@ function enterData() {
 submitBTN.addEventListener("click",enterData)
 
 
-/******************* ON COMMAND *******************/
+function deleteElement() {
+    //This is the implied object, that is who called the function
         
-function onChange(snapshot) {
+    console.log(this.id) 
+    div = document.getElementById(this.id+"c")
+    div.remove()
 
-    const data = snapshot.val();
-        
-    d = document.createElement("div")
-    d.innerHTML = createCard(data["username"],data["teamname"],data["message"])
-    display.appendChild(d)
-
-            
-}
-
-postsUpdate.on("child_added", onChange)
-
-
-function deleteData() {
-
-console.log("it's not working yet lol")
-
+    ref = database.ref(/posts/+this.id)
+    ref.remove();
 }
