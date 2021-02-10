@@ -47,7 +47,6 @@ function login(e) {
         landing_content.style.display = "none";
         drills_content.style.display = "none";
         discussionboard_content.style.display = "none";
-        console.log(uName)
     }
     else {
         M.toast({html: "Incorrect Email or Password"})
@@ -141,6 +140,7 @@ function createCollapsible(teamname) {
                 <table class="highlight">
                     <thead>
                         <tr>
+                            <th>Date</th>
                             <th>Home</th>
                             <th>Away</th>
                             <th>Directions</th>
@@ -149,19 +149,22 @@ function createCollapsible(teamname) {
 
                     <tbody>
                         <tr>
-                            <td>Upper Canada College</td>
+                            <td>12 November 2021</td>
                             <td>Royal St. George's College</td>
-                            <td><a class="waves-effect waves-light btn orange darken-4">Route</a></td>
+                            <td>Upper Canada College</td>
+                            <td><a target="_blank" href="https://www.google.com/maps/dir/Upper+Canada+College,+200+Lonsdale+Rd,+Toronto,+ON+M4V+2X8/Royal+St.+George's+College,+120+Howland+Ave,+Toronto,+ON+M5R+3B5/@43.6813409,-79.4254611,14z/data=!3m1!4b1!4m14!4m13!1m5!1m1!1s0x882b33684057775d:0x3dd2a9840eeeced9!2m2!1d-79.4037458!2d43.6933068!1m5!1m1!1s0x882b3490f2282119:0xd9caf76dd3591d53!2m2!1d-79.410477!2d43.6693777!3e0" class="waves-effect waves-light btn orange darken-4">Route</a></td>
                         </tr>
                         <tr>
+                            <td>19 November 2021</td>
                             <td>Upper Canada College</td>
                             <td>St. Michael's College School</td>
-                            <td><a class="waves-effect waves-light btn orange darken-4">Route</a></td>
+                            <td><a onclick="homeTeamError()" class="waves-effect waves-light btn orange darken-4">Route</a></td>
                         </tr>
                         <tr>
+                            <td>3 December 2021</td>
                             <td>Crescent School</td>
                             <td>Upper Canada College</td>
-                            <td><a class="waves-effect waves-light btn orange darken-4">Route</a></td>
+                            <td><a target="_blank" href="https://www.google.com/maps/dir/Upper+Canada+College,+200+Lonsdale+Rd,+Toronto,+ON+M4V+2X8/Crescent+School,+Bayview+Avenue,+North+York,+ON/@43.7131735,-79.4139001,14z/data=!3m1!4b1!4m14!4m13!1m5!1m1!1s0x882b33684057775d:0x3dd2a9840eeeced9!2m2!1d-79.4037458!2d43.6933068!1m5!1m1!1s0x89d4cd3515f54deb:0xf3235abe67362418!2m2!1d-79.379074!2d43.732938!3e0" class="waves-effect waves-light btn orange darken-4">Route</a></td>
                         </tr>
                     </tbody>
                 </table>
@@ -227,6 +230,20 @@ for (i = 0; i < 4; i = i + 1) {
 
 }
 
+function homeTeamError() {
+
+    M.toast({html: "Unavailable: UCC Is Home Team"})
+
+}
+
+//********************* EMAIL FUNCTION ******************/
+
+function openEmail() {
+
+    window.open('mailto:edwin.kim@ucc.on.ca?subject=Drill Suggestion for UCC Upper School Basketball Website');
+
+}
+
 //********************* FIREBASE PULL ******************/
 
 
@@ -249,7 +266,7 @@ firebase.analytics();
 
 var database = firebase.database();
         
-var display = document.getElementById("live")
+var display = document.getElementById("postDisplay")
 
 var submitBTN = document.getElementById("enter_dataBTN")
 
@@ -260,7 +277,7 @@ function createCard(username,teamname,message,key) {
     const card = `<div class="col s12">
                         <div class="card small orange darken-4">
                             <div class="card-content white-text">
-                                <span class="card-title"><h4>${username}</h4></span>
+                                <span class="card-title""><h4>${username}</h4></span>
                                 <h5>${teamname}</h5>
                                 <p>Message: ${message}</p>
                                 <br>
@@ -292,7 +309,7 @@ function enterData() {
 
     if (document.getElementById("opbox").value === "") {
 
-        M.toast({html: "Error: You Must Select a Team"}) //error checking: ensures no posts with no teamname label
+        M.toast({html: "Error: Team Must Be Selected"}) //error checking: ensures no posts with no teamname label
 
     } else if (document.getElementById("message").value === "") {
 
@@ -318,29 +335,45 @@ submitBTN.addEventListener("click",enterData)
         
 function onChange(snapshot) {
 
-    const data = snapshot.val();
+    const data = snapshot.val()
         
     d = document.createElement("div")
     key = snapshot.key
-    d.id = key+"c"
+    d.id = key + "c"
 
     d.innerHTML = createCard(data["username"],data["teamname"],data["message"],snapshot.key)
     display.appendChild(d)
 
     btn = document.getElementById(key)
-    btn.onclick = deleteElement;
+    btn.onclick = deleteCard;
 
 }
 
 postsUpdate.on("child_added", onChange)
 
 
-function deleteElement() {
+function deleteCard() {
 
-    div = document.getElementById(this.id+"c")
+    div = document.getElementById(this.id + "c")
     ref = database.ref(/posts/+this.id)
 
-    div.remove();
-    ref.remove();
+    div.remove()
+    ref.remove()
+
+}
+
+function deleteAllCards() {
+
+    if (username === "edwin.kim@ucc.on.ca") {
+
+        database.ref(`/posts/`).remove()
+
+        M.toast({html: "Changes Made; Please Refresh Browser"})
+
+    } else {
+
+        M.toast({html: "Error: Invalid Permissions"})
+
+    }
 
 }
