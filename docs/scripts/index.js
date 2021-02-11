@@ -14,11 +14,6 @@ home_content.style.display = "none";
 drills_content.style.display = "none";
 discussionboard_content.style.display = "none";
 
-
-function getUser() {
-    return uName;
-}
-
 function checkCred(name,pwd) {
 
     for (i = 0; i < uNames.length; i = i + 1) {
@@ -42,18 +37,17 @@ function login(e) {
     if (checkCred(email,password) === true) {
         uName = email //sets variable uName to email
         pWord = password //sets variable pWord to password
-        e.preventDefault() //stops page from reloading
         home_content.style.display = "block";
         landing_content.style.display = "none";
         drills_content.style.display = "none";
         discussionboard_content.style.display = "none";
     }
     else {
-        M.toast({html: "Incorrect Email or Password"})
+        M.toast({html: "Error: Invalid Email Or Password"})
     }
    
-    const modal = document.querySelector("#modal-login");
-    M.Modal.getInstance(modal).close();
+    const modallogin = document.querySelector("#modal-login");
+    M.Modal.getInstance(modallogin).close();
     
 }
 
@@ -232,7 +226,7 @@ for (i = 0; i < 4; i = i + 1) {
 
 function homeTeamError() {
 
-    M.toast({html: "Unavailable: UCC Is Home Team"})
+    M.toast({html: "Directions Unavailable: UCC Is Home Team"})
 
 }
 
@@ -364,11 +358,17 @@ function deleteCard() {
 
 function deleteAllCards() {
 
+    username = uName
+
+    const modalconfirm = document.querySelector("#modal-confirm")
+
+    M.Modal.getInstance(modalconfirm).close()
+
     if (username === "edwin.kim@ucc.on.ca") {
 
         database.ref(`/posts/`).remove()
 
-        M.toast({html: "Changes Made; Please Refresh Browser"})
+        M.toast({html: "Changes Made - Refresh Browser"})
 
     } else {
 
