@@ -1,6 +1,6 @@
 $(document).ready(function(){
 
-    $('.modal').modal();
+	$('.modal').modal();
 	$('.collapsible').collapsible();
 	$('select').formSelect();
 
