@@ -5,6 +5,8 @@
     Upper School Basketball: Official Website
   </title>
 
+  <!--Stylesheet Links-->
+
   <link href="scripts/stylesheet.css" rel="stylesheet">
   <link href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css" rel="stylesheet">
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
@@ -16,6 +18,7 @@
 LANDING PAGE
 -->
   
+<!--Landing Page Content-->
   <div id = "landing" class = "container">
     <center><br><br><br>
     <h2>Login to Upper School Basketball: Official Website</h2><br><br>
@@ -24,6 +27,7 @@ LANDING PAGE
     <a href = "#modal-login" class ="btn-large modal-trigger red darken-2">LOGIN</a>
   </div>
 
+  <!--Login Modal-->
   <div id = "modal-login" class = "modal">
 
     <div class = "modal-content">
@@ -51,21 +55,24 @@ TEAM INFO PAGE
 -->
 
   <div id = "home" display = "none">
+
+    <!--Navigation Bar-->
     <nav>
       <div class="nav-wrapper red darken-2">
 
         <a class="brand-logo">&nbsp; Upper School Basketball: Official Website</a>
 
         <ul class="right hide-on-med-and-down">
-          <li class="active"><a onclick="teamInfo()" id="teaminfo_btn">Team Info</a></li>
-          <li><a onclick="drills()" id="drills_btn">Drills</a></li>
-          <li><a onclick="discussionBoard()" id="discussionboard_btn">Discussion Board</a></li>
-          <li><a onclick="logout()" class="waves-effect waves-light btn white" id="logout_btn" style="color:black;">Log Out</a></li>
+          <li class="active"><a id="teaminfo_btn">Team Info</a></li>
+          <li><a id="drills_btn">Drills</a></li>
+          <li><a id="discussionboard_btn">Discussion Board</a></li>
+          <li><a id="logout_btn" class="waves-effect waves-light btn white" style="color:black;">Log Out</a></li>
         </ul>
 
       </div>
     </nav>
 
+    <!--Team Info Page Content-->
     <center>
 
       <h2>Team Information</h2>
@@ -88,7 +95,7 @@ TEAM INFO PAGE
 
       <center>
 
-        <ul class="collapsible" id = "collapsibleConstant"></ul>
+        <ul class="collapsible" id = "teaminfocollapsible"></ul>
 
       </center> 
 
@@ -100,6 +107,7 @@ TEAM INFO PAGE
 DRILLS PAGE
 -->
 
+  <!--Navigation Bar-->
   <div id = "drills" display = "none">
     <nav>
       <div class="nav-wrapper red darken-2">
@@ -113,6 +121,7 @@ DRILLS PAGE
       </div>
     </nav>
 
+    <!--Drills Page Content-->
     <center>
 
         <h2>Drills</h2>
@@ -320,6 +329,7 @@ DRILLS PAGE
 
         <a class="red darken-2 waves-effect waves-light btn" onclick="openEmail()">Don't See A Drill You Like? Suggest One To Be Added!</a>
         <br><br>
+
     </center>
   </div>
 
@@ -329,6 +339,7 @@ DISCUSSION BOARD PAGE
 
   <div id = "discussionboard" display = "none">
 
+    <!--Navigation Bar-->
     <nav>
       <div class="nav-wrapper red darken-2">
         <a class="brand-logo">&nbsp; Upper School Basketball: Official Website</a>
@@ -341,6 +352,7 @@ DISCUSSION BOARD PAGE
       </div>
     </nav>
 
+    <!--Discussion Board Page Content-->
     <center>
 
       <h2>Discussion Board</h2>
@@ -353,10 +365,13 @@ DISCUSSION BOARD PAGE
 
       <br>
 
+      <!--Button Opens Modal-->
       <a href = "#modal-posting" class ="btn-large modal-trigger red darken-2">Post to Discussion Board</a>
 
+      <!--Button Opens Modal-->
       <a href = "#modal-confirm" class="btn-large modal-trigger red darken-2">Delete All Posts</a>
 
+      <!--"Confirm" Button Modal Content-->
       <div class = "modal" id = "modal-confirm">
 
         <div class = "modal-content">
@@ -371,6 +386,7 @@ DISCUSSION BOARD PAGE
 
       </div>
 
+      <!--"Post" Button Modal-->
       <div class = "modal" id = "modal-posting">
 
         <div class = "modal-content">
@@ -413,11 +429,15 @@ DISCUSSION BOARD PAGE
 
     <div class = "container">
 
+      <!--div contains all generated cards from database-->
+
       <div id = "postDisplay" class = "row"></div>
 
     </div>
 
   </div>
+
+  <!--Script Links-->
 
   <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-beta/js/materialize.min.js"></script>

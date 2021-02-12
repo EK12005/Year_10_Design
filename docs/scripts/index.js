@@ -2,18 +2,21 @@
 
 var uNames = ["edwin.kim@ucc.on.ca","chicken@chicken.com"] //stores user names
 var pWords = ["1234","1234"] //stores passwords
-var uName = null
-var pWord = null
+var uName = null //sets variable uName to null on landing page
+var pWord = null //sets variable pWord to null on landing page
 
+//gets page content from div ids
 var landing_content = document.getElementById("landing")
 var home_content = document.getElementById("home")
 var drills_content = document.getElementById("drills")
 var discussionboard_content = document.getElementById("discussionboard")
 
+//sets all subpage content to "none" except landing page
 home_content.style.display = "none";
 drills_content.style.display = "none";
 discussionboard_content.style.display = "none";
 
+//function: checking for correct username and password
 function checkCred(name,pwd) {
 
     for (i = 0; i < uNames.length; i = i + 1) {
@@ -30,31 +33,31 @@ function checkCred(name,pwd) {
 function login(e) {
 
     e.preventDefault() //stops page from reloading
-    const email =  loginForm["login-email"].value;
-    const password = loginForm["login-password"].value;
-    loginForm.reset();
+    const email =  loginForm["login-email"].value; //sets constant email to form input
+    const password = loginForm["login-password"].value; //sets constant password to form input
+    loginForm.reset(); //resets form values
 
     if (checkCred(email,password) === true) {
         uName = email //sets variable uName to email
         pWord = password //sets variable pWord to password
-        home_content.style.display = "block";
+        home_content.style.display = "block"; //sets "team info" page content to "block"
         landing_content.style.display = "none";
         drills_content.style.display = "none";
         discussionboard_content.style.display = "none";
     }
     else {
-        M.toast({html: "Error: Invalid Email Or Password"})
+        M.toast({html: "Error: Invalid Email Or Password"}) //toast pops up with invalid credentials
     }
    
-    const modallogin = document.querySelector("#modal-login");
-    M.Modal.getInstance(modallogin).close();
+    const modallogin = document.querySelector("#modal-login"); //sets constant modallogin by id
+    M.Modal.getInstance(modallogin).close(); //closes modal when prompted
     
 }
 
 function logout() {
-    uName = null
-    pWord = null
-    landing_content.style.display = "block";
+    uName = null //resets username to null
+    pWord = null //resets password to null
+    landing_content.style.display = "block"; //sets landing page content to "block"
     home_content.style.display = "none";
     drills_content.style.display = "none";
     discussionboard_content.style.display = "none";
@@ -62,7 +65,7 @@ function logout() {
 
 function teamInfo() {
     landing_content.style.display = "none";
-    home_content.style.display = "block";
+    home_content.style.display = "block"; //sets "team info" page content to "block"
     drills_content.style.display = "none";
     discussionboard_content.style.display = "none";
 }
@@ -70,7 +73,7 @@ function teamInfo() {
 function drills() {
     landing_content.style.display = "none";
     home_content.style.display = "none";
-    drills_content.style.display = "block";
+    drills_content.style.display = "block"; //sets "drills" page content to "block"
     discussionboard_content.style.display = "none";
 }
 
@@ -78,14 +81,14 @@ function discussionBoard() {
     landing_content.style.display = "none";
     home_content.style.display = "none";
     drills_content.style.display = "none";
-    discussionboard_content.style.display = "block";
+    discussionboard_content.style.display = "block"; //sets "discussion board" page content to "block"
 }
 
 const loginForm = document.querySelector("#login-form")
 loginForm.addEventListener("submit",login);
 
 const logout_BTN = document.getElementById("logout_btn")
-logout_BTN.addEventListener("click",logout);
+logout_BTN.addEventListener("click",logout); 
 
 const drillsBTN = document.getElementById("drills_btn")
 drillsBTN.addEventListener("click",drills);
@@ -96,7 +99,7 @@ teaminfoBTN.addEventListener("click",teamInfo);
 const discussionboardBTN = document.getElementById("discussionboard_btn")
 discussionboardBTN.addEventListener("click",discussionBoard);
 
-//********************* TEAM INFO COLLAPSIBLE FUNCTION (REPETITVE HTML) ******************/
+//********************* TEAM INFO COLLAPSIBLE FUNCTION ******************/
 
 function createCollapsible(teamname) {
 
@@ -192,7 +195,9 @@ return collapsible
 
 }
 
-const teamInfoDropdown = document.getElementById("collapsibleConstant")
+const teamInfoDropdown = document.getElementById("teaminfocollapsible") //creates constant teamInfoDropdown from collapsible id
+
+//sets teamname options
 
 var teams = {
 
@@ -218,15 +223,17 @@ var teams = {
 
 }
 
-for (i = 0; i < 4; i = i + 1) {
+for (i = 0; i < 4; i = i + 1) { //loops 4 times
 
-    teamInfoDropdown.innerHTML += createCollapsible(teams["collapsibles"][i]["teamname"])
+    teamInfoDropdown.innerHTML += createCollapsible(teams["collapsibles"][i]["teamname"]) //runs createCollapsible function for .innerHTML of teamInfoDropdown
 
 }
 
-function homeTeamError() {
+//********************* "HOME TEAM" ERROR FUNCTION ******************/
 
-    M.toast({html: "Directions Unavailable: UCC Is Home Team"})
+function homeTeamError() { 
+
+    M.toast({html: "Directions Unavailable: UCC Is Home Team"}) //toast pops up when UCC is home team
 
 }
 
@@ -234,7 +241,7 @@ function homeTeamError() {
 
 function openEmail() {
 
-    window.open('mailto:edwin.kim@ucc.on.ca?subject=Drill Suggestion for UCC Upper School Basketball Website');
+    window.open('mailto:edwin.kim@ucc.on.ca?subject=Drill Suggestion for UCC Upper School Basketball Website') //opens mail application addressed to edwin.kim@ucc.on.ca
 
 }
 
@@ -258,7 +265,7 @@ var firebaseConfig = {
 firebase.initializeApp(firebaseConfig);
 firebase.analytics();
 
-var database = firebase.database();
+var database = firebase.database(); //sets variable database to firebase database
         
 var display = document.getElementById("postDisplay")
 
@@ -266,7 +273,7 @@ var submitBTN = document.getElementById("enter_dataBTN")
 
 var postsUpdate = database.ref('posts')
 
-function createCard(username,teamname,message,key) {
+function createCard(username,teamname,message,key) { //card HTML function
 
     const card = `<div class="col s12">
                         <div class="card small orange darken-4">
@@ -293,13 +300,13 @@ function writePostData(userId, username, teamname, message) {
 
     }
 
-    database.ref('posts/' + userId).set(data);
+    database.ref('posts/' + userId).set(data); 
 
 }
 
 function enterData() {
 
-    username = uName
+    username = uName //sets variable username to current uName
 
     if (document.getElementById("opbox").value === "") {
 
@@ -307,39 +314,39 @@ function enterData() {
 
     } else if (document.getElementById("message").value === "") {
 
-        M.toast({html: "Error: Message Body Must Be Filled"}) //error 
+        M.toast({html: "Error: Message Body Must Be Filled"}) //error checking: ensures no posts with no message body
 
     } else {
 
-        teamname = document.getElementById("opbox").value
+        teamname = document.getElementById("opbox").value //gets teamname from optionbox value
 
-        message = document.getElementById("message").value
+        message = document.getElementById("message").value //gets message from entry box value
 
-        var newPostKey = database.ref().child('posts').push().key;
+        var newPostKey = database.ref().child('posts').push().key; //pushes to database as a child of "posts"
 
-        writePostData(newPostKey,username,teamname,message)
+        writePostData(newPostKey,username,teamname,message) //runs writePostData
 
-        post_form.reset()
+        post_form.reset() //resets form values
 
     }
             
 }
      
-submitBTN.addEventListener("click",enterData)
+submitBTN.addEventListener("click",enterData) //adds event listener to submitBTN to run enterData() when clicked
         
 function onChange(snapshot) {
 
-    const data = snapshot.val()
+    const data = snapshot.val() //sets constant data to snapshot.val()
         
-    d = document.createElement("div")
-    key = snapshot.key
-    d.id = key + "c"
+    d = document.createElement("div") //creates variable d to div creation in document
+    key = snapshot.key //sets variable key to snapshot.key
+    d.id = key + "c" //sets div id to key + "c"
 
-    d.innerHTML = createCard(data["username"],data["teamname"],data["message"],snapshot.key)
-    display.appendChild(d)
+    d.innerHTML = createCard(data["username"],data["teamname"],data["message"],snapshot.key) //sets d.innerHTML to createCard function
+    display.appendChild(d) //adds div to variable display
 
-    btn = document.getElementById(key)
-    btn.onclick = deleteCard;
+    btn = document.getElementById(key) //gets button by key id
+    btn.onclick = deleteCard; //sets onclick to deleteCard function
 
 }
 
@@ -348,31 +355,30 @@ postsUpdate.on("child_added", onChange)
 
 function deleteCard() {
 
-    div = document.getElementById(this.id + "c")
-    ref = database.ref(/posts/+this.id)
+    div = document.getElementById(this.id + "c") //sets new var div to this.id + "c"
+    ref = database.ref(/posts/+this.id) //sets new var ref to this.id
 
-    div.remove()
-    ref.remove()
+    div.remove() //removes div
+    ref.remove() //removes post data from database
 
 }
 
 function deleteAllCards() {
 
-    username = uName
+    username = uName //sets var username to current uName value
 
     const modalconfirm = document.querySelector("#modal-confirm")
-
     M.Modal.getInstance(modalconfirm).close()
 
     if (username === "edwin.kim@ucc.on.ca") {
 
-        database.ref(`/posts/`).remove()
+        database.ref(`/posts/`).remove() //removes all data from database
 
-        M.toast({html: "Changes Made - Refresh Browser"})
+        M.toast({html: "Changes Made - Refresh Browser"}) //since div is not removed, toast pops up telling user to refresh
 
     } else {
 
-        M.toast({html: "Error: Invalid Permissions"})
+        M.toast({html: "Error: Invalid Permissions"}) //if anyone besides admin tries to run function error messages pops up
 
     }
 
