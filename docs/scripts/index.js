@@ -1,7 +1,7 @@
 //********************* AUTHENTICATION AND PAGE NAVIGATION ******************/
 
-var uNames = ["edwin.kim@ucc.on.ca","chicken@chicken.com"] //stores user names
-var pWords = ["1234","1234"] //stores passwords
+var uNames = ["edwin.kim@ucc.on.ca","pmiskew@ucc.on.ca","jacob.moore@ucc.on.ca","andrew.cansfield@ucc.on.ca","deanna.kim99@gmail.com","haeyoung.kee@gmail.com","ybkim@physics.utoronto.ca","matthew.ho@ucc.on.ca","edward.xing@ucc.on.ca","gavin.sellars@ucc.on.ca","neil.zhou@ucc.on.ca","mateo.rementilla@ucc.on.ca","adyn.zarudny@ucc.on.ca"] //stores user names
+var pWords = ["1234","1234","1234","1234","1234","1234","1234","1234","1234","1234","1234","1234","1234"] //stores passwords
 var uName = null //sets variable uName to null on landing page
 var pWord = null //sets variable pWord to null on landing page
 
