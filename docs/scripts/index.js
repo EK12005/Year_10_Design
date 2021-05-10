@@ -41,9 +41,9 @@ function login(e) {
         uName = email //sets variable uName to email
         pWord = password //sets variable pWord to password
         home_content.style.display = "block"; //sets "team info" page content to "block"
-        landing_content.style.display = "none";
-        drills_content.style.display = "none";
-        discussionboard_content.style.display = "none";
+        landing_content.style.display = "none"; //sets landing page content to "none"
+        drills_content.style.display = "none"; //sets "drills" page content to "none"
+        discussionboard_content.style.display = "none"; //sets "discussion board" page content to "none"
     }
     else {
         M.toast({html: "Error: Invalid Email Or Password"}) //toast pops up with invalid credentials
@@ -191,7 +191,7 @@ function createCollapsible(teamname) {
         </div>
     </li>`
 
-return collapsible
+return collapsible //returns collapsible HTML
 
 }
 
@@ -199,7 +199,7 @@ const teamInfoDropdown = document.getElementById("teaminfocollapsible") //create
 
 //sets teamname options
 
-var teams = {
+var teams = { //contains teamnames
 
     "collapsibles": [
 
@@ -241,12 +241,11 @@ function homeTeamError() {
 
 function openEmail() {
 
-    window.open('mailto:edwin.kim@ucc.on.ca?subject=Drill Suggestion for UCC Upper School Basketball Website') //opens mail application addressed to edwin.kim@ucc.on.ca
+    window.open('mailto:edwin.kim@ucc.on.ca?subject=Drill Suggestion for UCC Upper School Basketball Website') //opens mail application to an email addressed to edwin.kim@ucc.on.ca
 
 }
 
-//********************* FIREBASE PULL ******************/
-
+//********************* FIREBASE PULL + CARD CREATION/DELETION ******************/
 
 var firebaseConfig = {
 
@@ -350,10 +349,10 @@ function onChange(snapshot) {
 
 }
 
-postsUpdate.on("child_added", onChange)
+postsUpdate.on("child_added", onChange) //runs onChange when child is added to /posts/ in database
 
 
-function deleteCard() {
+function deleteCard() { //function to delete a singular card (from delete button on post)
 
     div = document.getElementById(this.id + "c") //sets new var div to this.id + "c"
     ref = database.ref(/posts/+this.id) //sets new var ref to this.id
@@ -363,7 +362,7 @@ function deleteCard() {
 
 }
 
-function deleteAllCards() {
+function deleteAllCards() { //function to delete all cards (from delete all posts button near the top of page)
 
     username = uName //sets var username to current uName value
 
