@@ -1,4 +1,3 @@
-'''
 #Approach 1: Finding The Sum Of A Set List Using Recursion
 def sumList1(intList):
 
@@ -9,8 +8,6 @@ def sumList1(intList):
 
 intList = [3,2,4,4,6]
 print(sumList1(intList))
-
-'''
 
 #Approach 2: Finding The Sum Of A Set List Using Iteration
 def sumList2(intList):

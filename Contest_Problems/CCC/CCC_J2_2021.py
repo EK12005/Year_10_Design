@@ -1,4 +1,3 @@
-'''
 #Approach 1 (List)
 n = int(input())
 
@@ -24,33 +23,29 @@ for c in range(1,len(data),2):
 		largestindex = c
 
 print(data[largestindex - 1])
-'''
+
 
 #Approach 2 (Dictionary)
 n = int(input())
 
-data = {
-	"bidname": [],
-	"bidvalue": []
-}
+data = {}
 
 i = 0
 
 while i < n:
 	name = input()
 	value = int(input())
-	data["bidname"].append(name)
-	data["bidvalue"].append(value)
+	data[name] = value
 	i = i + 1
 
-largest = data["bidvalue"][0]
+keylist = list(data.keys())
+lkey = keylist[0]
+lvalue = data[lkey]
 
-largestindex = 0
+for c in range(1,len(keylist),1):
 
-for c in range(1,len(data["bidvalue"]),1):
+	if lvalue < data[keylist[c]]:
+		lkey = keylist[c]
+		lvalue = data[keylist[c]]
 
-	if largest < data["bidvalue"][c]:
-		largest = data["bidvalue"][c]
-		largestindex = c
-
-print(data["bidname"][largestindex])
+print(lkey)
