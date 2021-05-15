@@ -24,7 +24,6 @@ for c in range(1,len(data),2):
 
 print(data[largestindex - 1])
 
-
 #Approach 2 (Dictionary)
 n = int(input())
 
